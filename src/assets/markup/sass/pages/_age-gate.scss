@@ -1,0 +1,58 @@
+// ---------------------------------------------------------===
+// Where to Buy page styles
+// ---------------------------------------------------------===
+
+.age-gate {
+    display: table;
+    height: 100%;
+
+    .tc {
+        display: table-cell;
+        vertical-align: middle;
+        padding: 50px 19px;
+        text-align: center;
+    }
+
+    .inner {
+        max-width: 630px;
+        margin: 0 auto;
+        position: relative;
+
+        &:before {
+            content: '';
+            top: 0;
+            left: -200px;
+            right: -200px;
+            position: absolute;
+            height: 95px;
+            background: url('#{$image-path}/bg09.png') no-repeat 50% 50%;
+
+            @include media('<desktop') {
+                top: -18px;
+            }
+        }
+    }
+
+    h1 {
+        @extend %h1;
+        text-align: left;
+        margin: 0 0 0 16%;
+
+        @include media('<desktop') {
+            margin-left: 27%;
+        }
+
+        @include media('<tablet') {
+            margin: 0 auto;
+            max-width: 273px;
+        }
+    }
+
+    p {
+        margin-bottom: 20px;
+    }
+
+    .btn {
+        margin-bottom: 12px;
+    }
+}

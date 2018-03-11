@@ -1,0 +1,25 @@
+<section class="row">
+  <div class="container">
+    <header class="heading">
+      <h2>{{content.title}}</h2>
+      <p class="p-md">{{content.description}}</p>
+    </header>
+    <ul class="grid-isotope" [ngClass]="listClass">
+
+      <li *ngFor="let image of content.items" [ngClass]="image.size">
+        <a href="#" class="card" *ngIf="image.image">
+          <img [src]="image.image" alt="">
+          <div class="cap">
+            <div class="uname">{{image.title}}</div>
+            <div>{{image.description}}</div>
+          </div>
+        </a>
+
+        <div *ngIf="!image.image">
+          <h2 class="text-pink">{{image.title}}</h2>
+          <p class="p-md">{{image.description}}</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>

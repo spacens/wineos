@@ -1,0 +1,18 @@
+<div class="blog-row">
+  <h2 [ngClass]="'text-' + color">{{title}}</h2>
+  <div class="slider-blog">
+
+
+    <div *ngFor="let slide of items; let idx = index;">
+      <div class="blog" [ngClass]="'border-' + color + '-'+ (idx+1)">
+        <a [routerLink]="slide.link" class="img-hold">
+          <img [src]="slide.image" alt="">
+        </a>
+        <h3><a [routerLink]="slide.link">{{slide.title}}</a></h3>
+        <p [innerHTML]="slide.description"></p>
+      </div>
+    </div>
+
+  </div>
+  <a *ngIf="allLink" [routerLink]="allLink" class="link-decor">All {{title}}</a>
+</div>

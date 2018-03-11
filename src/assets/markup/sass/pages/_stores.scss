@@ -1,0 +1,102 @@
+// ---------------------------------------------------------===
+// Where to Buy page styles
+// ---------------------------------------------------------===
+
+.stores {
+    padding: 85px 0 72px;
+
+    @include media('<desktop') {
+        padding: 37px 0 64px;
+    }
+
+    @include media('<tablet') {
+        padding: 0 0 51px;
+    }
+
+    .grid-flex {
+        @include media('>=desktop') {
+            flex-direction: row-reverse;
+        }
+    }
+
+    .title {
+        display: block;
+        font-size: 18px;
+        line-height: 1.3;
+        font-weight: 500;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+    }
+
+    .row {
+        + .row {
+            margin-top: 29px;
+        }
+
+        .store-list {
+            margin-top: -7px;
+        }
+    }
+
+    .map {
+        height: 100%;
+        position: relative;
+
+        @include media('<desktop') {
+            height: 500px;
+            margin-bottom: 40px;
+        }
+
+        @include media('<tablet') {
+            height: 350px;
+            margin: 0 -19px 33px;
+        }
+
+        .placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+        }
+    }
+}
+
+// store list
+.store-list {
+    @extend %listreset;
+    counter-reset: item;
+    margin-bottom: 16px;
+
+    > li {
+        padding: 11px 15px 10px 53px;
+        position: relative;
+
+        &:before {
+            @include box-align(vc);
+            left: 16px;
+            content: counter(item);
+            counter-increment: item;
+            width: 21px;
+            height: 31px;
+            color: $white;
+            font: 14px/23px $hwtartz;
+            text-align: center;
+            background: url('#{$image-path}/marker.svg') no-repeat 0 0/21px auto;
+        }
+
+        &:nth-child(odd) {
+            background: #f9f3ff;
+        }
+
+        strong,
+        span {
+            display: block;
+        }
+
+        strong {
+            font-weight: 700;
+        }
+    }
+}

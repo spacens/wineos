@@ -1,0 +1,15 @@
+<div class="archive-header">
+  <div class="container">
+    <div class="grid-flex">
+      <div class="col-sm-4">
+        <h1 [innerHTML]="title"></h1>
+      </div>
+      <div class="col-sm-8">
+        <ul class="archive-nav">
+          <li *ngFor="let link of links" routerLinkActive="active">
+            <a [routerLink]="link.link">{{link.title}}</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,121 @@
+// ---------------------------------------------------------===
+// Button styles
+// ---------------------------------------------------------===
+
+.btn {
+    display: inline-block;
+    padding: 14px 32px;
+    border: 2px solid transparent;
+    outline: none;
+    text-align: center;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.3;
+    background-color: transparent;
+    border-radius: 8px;
+
+    @include media('<tablet') {
+        font-size: 14px;
+        padding: 12px 28px;
+    }
+
+    &-rounded {
+        border-radius: 40px;
+    }
+
+    &-sm {
+        font-size: 12px;
+        line-height: 1.3;
+    }
+
+    &-lg {
+        font-size: 20px;
+        line-height: 1.85;
+    }
+
+    &-full {
+        display: block;
+        width: 100%;
+    }
+
+    i {
+        font-size: 13px;
+        margin-right: 9px;
+    }
+
+    .icon-next {
+        margin: 0 0 0 9px;
+    }
+}
+
+.btn-outline-blue1 {
+    border-color: $butterfly-bush;
+    color: $yellow-sea;
+
+    &:hover,
+    &.active {
+        background-color: $butterfly-bush;
+        color: $yellow-sea;
+    }
+}
+
+@each $color, $value in $theme-colors {
+  .btn-#{$color} {
+    @if $color == "white" {
+        @include btn-theme($butterfly-bush, $value);
+    } @else {
+        @include btn-theme($white, $value);
+    }
+  }
+}
+
+@each $color, $value in $theme-colors {
+  .btn-outline-#{$color} {
+    @include btn-theme($white, $value, 'true');
+    @if $color == "white" {
+        &:hover,
+        &.active {
+            color: $butterfly-bush;
+        }
+    } @elseif $color == "brown" {
+        color: $strikemaster;
+
+        &:hover,
+        &.active {
+            color: $white;
+        }
+    }
+  }
+}
+
+.btn-group {
+    display: flex;
+    margin-bottom: 16px;
+
+    .btn {
+        border-radius: 0;
+        flex: 1;
+        margin-right: -2px;
+
+        &:first-child {
+            border-radius: 8px 0 0 8px;
+        }
+
+        &:last-child {
+            border-radius: 0 8px 8px 0;
+        }
+    }
+}
+
+.btn-play {
+    @include box-align(vhc);
+    width: 100px;
+    height: 100px;
+    background: url('#{$image-path}/play.svg');
+    background-size: cover;
+
+    @include media('<tablet') {
+        width: 60px;
+        height: 60px;
+    }
+}

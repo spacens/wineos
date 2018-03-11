@@ -1,0 +1,43 @@
+<footer id="footer">
+    <div class="container">
+        <div class="right">
+            <ul class="foo-links" app-menu></ul>
+
+            <!--<ul class="social-links">-->
+                <!--<li><a href="#" class="icon-facebook"></a></li>-->
+                <!--<li><a href="#" class="icon-twitter"></a></li>-->
+                <!--<li><a href="#" class="icon-instagram"></a></li>-->
+                <!--<li><a href="#" class="icon-pinterest"></a></li>-->
+            <!--</ul>-->
+            <ul class="social-links">
+                <li *ngFor="let socialLink of socialLinks">
+                    <a [href]="socialLink.link" [class]="socialLink.icon" target="_blank"></a>
+                </li>
+            </ul>
+            <ul class="extra-links">
+                <li><a routerLink="contact-us">Contact Us</a></li>
+                <li><a href="http://www.gallocareers.com/" target="_blank">Careers</a></li>
+                <li><a routerLink="faq">FAQ</a></li>
+                <li><a routerLink="where-to-buy">Find a Store</a></li>
+                <li><a class="modal-opener" (click)="showNewsletter()">Join Newsletter</a></li>
+                <li><a routerLink="international">International</a></li>
+            </ul>
+        </div>
+        <div class="left">
+            <div class="logo"><a routerLink="/"><img [src]="logoImage" alt="Barefoot"></a></div>
+            <ul class="extra-links copyright">
+                <li [innerHTML]="copyright"></li>
+                <li><a routerLink="privacy-policy">Privacy Policy</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+
+<div [ngClass]="{'modal-active' : showNewsModal}">
+<div class="modal-wrap" id="newsletter">
+    <div class="newsletter modal">
+        <a  (click)="hideNewslatter()" class="modal-opener close"><i class="icon-cross"></i></a>
+        <app-newsletter *ngIf="showNewsModal"></app-newsletter>
+    </div>
+</div>
+</div>

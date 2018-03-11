@@ -1,0 +1,120 @@
+// ---------------------------------------------------------===
+// Helpers
+// ---------------------------------------------------------===
+
+%h1 {
+    transform-origin: 0 0;
+    transform: rotate(-12deg);
+}
+
+%stripebg {
+    position: relative;
+    z-index: 1;
+    color: $white;
+    padding: 120px 0 83px;
+
+    @include media('<tablet') {
+      padding: 24px 0 20px;
+    }
+
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        background-repeat: repeat-x;
+        background-position: 50% 0;
+        z-index: -1;
+    }
+
+    &:before {
+        top: 0;
+    }
+
+    &:after {
+        bottom: 0;
+    }
+}
+
+%rh {
+    background-repeat: repeat-x;
+    background-position: 50% 50%;
+}
+
+%p-md {
+    font-size: 19px;
+    line-height: 1.54;
+    margin-bottom: 25px;
+}
+
+.p-md {
+    @include media('>=tablet') {
+        font-size: 19px;
+        line-height: 1.54;
+        margin-bottom: 25px;
+    }
+}
+
+// list reset
+%listreset {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+// clearfix
+%clearfix {
+    &:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+}
+
+// clearfix
+.clearfix {
+    @extend %clearfix;
+}
+
+// transition
+%transition {
+    transition: all 0.3s ease-in-out;
+}
+
+// justify nav
+%justify {
+    text-align: justify; 
+    font-size: 1px;
+    line-height: 0px;
+    > * {
+        display: inline-block;
+        vertical-align: top;
+        text-align: left;
+        font-size: $font-size-base;
+        line-height: $line-height-base;
+    }
+    &:after { 
+        content: '';
+        width: 100%;
+        display: inline-block;
+        vertical-align: top;
+    }
+}
+
+/// * Helper class to truncate and add ellipsis to a string too long for it to fit
+/// * on a single line.
+/// * 1. Prevent content from wrapping, forcing it on a single line.
+/// * 2. Add ellipsis at the end of the line.
+
+.ellipsis {
+    white-space: nowrap; /* 1 */
+    text-overflow: ellipsis; /* 2 */
+    overflow: hidden;
+}
+
+// Reset image
+%img-reset {
+    display: block;
+    width: 100%;
+}

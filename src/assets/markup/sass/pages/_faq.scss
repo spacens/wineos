@@ -1,0 +1,108 @@
+// ---------------------------------------------------------===
+// Where to Buy page styles
+// ---------------------------------------------------------===
+
+.headline {
+    &.bg-purple {
+        background: $strikemaster;
+    }
+}
+
+.faq-section {
+    padding: 77px 0 10px;
+
+    @include media('<tablet') {
+        padding: 30px 0 11px;
+    }
+
+    h2 {
+        color: $persian-green;
+        margin: 0 0 23px;
+
+        @include media('<tablet') {
+            font-size: 30px;
+            margin: 0 0 18px;
+        }
+    }
+}
+
+.faq-accordion {
+    @extend %listreset;
+    margin: 0 0 71px;
+
+    @include media('<tablet') {
+        padding: 0 16px;
+        margin: 0 0 56px;
+    }
+
+    li {
+        margin: 0 0 24px;
+
+        @include media('<tablet') {
+            margin: 0 0 20px;
+        }
+
+        &.active {
+            .opener:before {
+                transform: rotate(90deg);
+            }
+        }
+    }
+
+    .opener {
+        font: 500 24px/1.2 $gotham;
+        color: #3f2b4f;
+        text-transform: uppercase;
+        position: relative;
+        padding-left: 25px;
+        display: inline-block;
+        vertical-align: top;
+
+        @include media('<tablet') {
+            font-size: 15px;
+            padding-left: 0;
+        }
+
+        &:before {
+            content: '';
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent $persian-green;
+            position: absolute;
+            top: 4px;
+            left: 0;
+            transition: transform 0.25s linear;
+            
+            @include media('<tablet') {
+                border-width: 7px 0 7px 8px;
+                top: 2px;
+                left: -19px;
+            }
+        }
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    .slide {
+        font-size: 19px;
+        line-height: 1.526;
+        padding: 29px 0 24px;
+
+        @include media('<tablet') {
+            font-size: 12px;
+            padding: 7px 0 17px;
+        }
+    }
+
+    p {
+        margin: 0;
+
+        & + p {
+            margin-top: 10px;
+        }
+    }
+}

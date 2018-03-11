@@ -1,0 +1,178 @@
+// ---------------------------------------------------------===
+// Utilities styles
+// ---------------------------------------------------------===
+
+.hide {
+    &-mobile {
+        @include media('<tablet') {
+            display: none !important;
+        }
+    }
+
+    &-tablet {
+        @include media('>=tablet','<desktop') {
+            display: none !important;
+        }
+    }
+
+    &-desktop {
+        @include media('>=desktop') {
+            display: none !important;
+        }
+    }
+}
+
+.show {
+    &-mobile {
+        display: block !important;
+
+        @include media('>=tablet') {
+            display: none !important;
+        }
+    }
+
+    &-on-tablet {
+        display: none;
+
+        @include media('>=tablet','<desktop') {
+            display: block !important;
+        }
+    }
+}
+
+.link-decor {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    padding-left: 20px;
+    position: relative;
+    padding: 0 0 6px 44px;
+    color: $martinique;
+    font-size: 19px;
+
+    @include media('<tablet') {
+        padding: 0 0 3px 35px;
+        font-size: 17px;
+    }
+
+    &:hover {
+        &:before {
+            left: 100%;
+        }
+    }
+
+    &:after {
+        content: '\e903';
+        font: 24px/1 icomoon;
+        position: absolute;
+        top: 2px;
+        left: 0;
+
+        @include media('<tablet') {
+            font-size: 21px;
+        }
+    }
+
+    &:before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: $martinique;
+        transition: left 0.25s linear;
+    }
+}
+
+.text-blue {
+    color: $san-Marino !important;
+}
+
+.text-green {
+    color: $persian-green !important;
+}
+
+.text-yellow {
+    color: $yellow-sea !important;
+}
+
+.text-pink {
+    color: $lipstick !important;
+}
+
+.text-purple {
+    color: $strikemaster !important;
+}
+
+.category-title {
+    display: inline-block;
+    vertical-align: top;
+    padding: 7px 20px;
+    border-radius: 20px;
+    color: $white;
+    background: $san-Marino;
+    margin: 0 0 28px;
+    font-weight: 500;
+    font-size: 10px;
+    text-transform: uppercase;
+
+    @include media('<tablet') {
+        font-size: 8px;
+        padding: 5px 13px 3px;
+        margin-bottom: 9px;
+    }
+}
+
+.container {
+    &.container-md {
+        max-width: 1125px;
+    }
+}
+
+.form-find {
+    position: relative;
+    margin-bottom: 29px;
+
+    &:before {
+        content: '\e90a';
+        font: 13px/1 $icomoon;
+        position: absolute;
+        top: 5px;
+        left: 3px;
+        color: $yellow-sea;
+    }
+
+    input[type="text"] {
+        border: none;
+        border-bottom: 2px solid $yellow-sea;
+        margin-bottom: 16px;
+        border-radius: 0;
+        padding: 0 32px 11px;
+    }
+
+    .btn {
+        display: block;
+        width: 100%;
+    }
+}
+
+.more {
+    display: inline-block;
+    position: relative;
+    padding-bottom: 17px;
+    font: 400 32px/0.84 $hwtartz;
+
+    @include media('<tablet') {
+        font-size: 28px;
+    }
+
+    &:before {
+        content: '\e913';
+        font: 7px/1 $icomoon;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        color: $lipstick;
+    }
+}

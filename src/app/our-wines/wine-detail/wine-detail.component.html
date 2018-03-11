@@ -1,0 +1,32 @@
+<main>
+    <div class="hero-brown">
+        <div class="top">
+            <div class="container">
+                <div class="inner">
+                    <h1>{{wineItem.title}}</h1>
+                    <div class="img"><img [src]="wineItem.image" alt=""></div>
+                    <p class="p-md" [innerHTML]="wineItem.description"></p>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="inner">
+                <div class="wine-taste">
+                    <div class="text-left">Dry</div>
+                    <div class="pin" style="left: 70%;">{{wineItem.title}}</div>
+                    <div class="text-right">Sweet</div>
+                </div>
+                <div class="taste-like">
+                    <strong class="title">Tastes like...</strong>
+                    <ul class="btn-list">
+                        <li *ngFor="let tag of wineItem.tags">
+                            <a class="btn btn-rounded btn-outline-brown">{{tag.title}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-meet-short></app-meet-short>
+    <app-wine-showcase title="Similar wine"></app-wine-showcase>
+</main>

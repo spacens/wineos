@@ -1,0 +1,11 @@
+<div class="blog full-width" [ngClass]="item.class">
+  <a [routerLink]="item.link" class="img-hold">
+    <div class="img" [ngStyle]="{'background-image' : item.backgroundImageUrl}"></div>
+  </a>
+  <div class="desc"  [style.background-image]="item.backgroundImageUrl">
+    <strong class="category-title">{{item.category}}</strong>
+    <h3><a [routerLink]="item.link">{{item.title}}</a></h3>
+    <p [innerHTML]="item.description"></p>
+    <time  class="date">{{item.date | date}}</time>
+  </div>
+</div>

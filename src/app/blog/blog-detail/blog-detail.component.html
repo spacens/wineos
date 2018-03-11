@@ -1,0 +1,25 @@
+<main>
+  <div class="visual" style="background-image: url('/assets/markup/images/visual03.jpg');">
+    <div class="container">
+      <div class="grid-flex">
+        <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+          <h1>{{blogPost.title}}</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="blog-article-wrap">
+    <div class="container">
+      <div class="blog-article grid">
+        <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+          <p [innerHTML]="blogPost.description"></p>
+          <div class="meta">
+            <span class="badge">{{blogPost.category}}</span>
+            <span class="date">{{blogPost.date | date}}</span>
+          </div>
+        </div>
+      </div>
+      <app-slider color="blue" title="Related" [items]="slides"></app-slider>
+    </div>
+  </div>
+</main>

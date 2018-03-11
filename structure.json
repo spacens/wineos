@@ -1,0 +1,88 @@
+//for now we have a cople of entity types: WineItem, TagItem, BlogItem, RecipeItem.
+//also we have a few "on page" componens/blocks LargeBanner, StorySection and etc.
+//
+
+{
+
+  "request_tag_list": [
+    //TAG ITEM
+    {
+      "id": 1,
+      "title": "Sweet"
+    },
+    //TAG ITEM
+    {
+      "id": 2,
+      "title": "too sweet"
+    }
+  ],
+  "request_wine_list": [
+    //WINE ITEM
+    {
+      "id" : 5,
+      "title": "Just wine name",
+      "description" : "",
+      "sort": "White",
+      //sort of wine
+      "images": [
+        "small bottle.jpg ",
+        "large bottle.jpg"
+      ],
+      //if wine present in differnt size,
+      "tags": [
+        //TAG ITEM
+        //TAG ITEM
+      ]
+    }
+  ],
+  //PAGES
+  "home": {
+    "block_life": {
+      "title": "Life is better with",
+      "description": "We’re always down bla bla",
+      "image": "",
+      // bottles
+      "buttonText": "find your wine",
+      "buttonLink": "wines"
+    },
+    "block_wines": {
+      "title": "OUR WINE",
+      "description": "Barefoot is in the business of making great"
+    },
+    "story_section": {
+      //STORY SECTION @COMPONENT
+      "title": "#GETBAREFOOT",
+      "description": "Share photos of all your favorite Barefoot moments.",
+      "items": [
+        {
+          "title": "@Jon",
+          "description": "from facebook",
+          "image": "",
+          "size": "lg"
+          //lg means large
+        }
+      ]
+    }
+  },
+  //structure of the our story page
+  "story": {
+    "large_banner": {
+      //LARGE BANNER @COMPONENT
+      "title": "We Believe in Brining People Together. With Wine.",
+      "description": "text",
+      "image": "/assets/markup/images/visual01.jpg"
+    },
+    "story_block": {
+      //STORY SECTION @COMPONENT
+    },
+    "list_block": {
+      //STORY SECTION @COMPONENT
+    },
+    "winning_awards_block": {
+      //STORY SECTION @COMPONENT
+    },
+    "wine_maker_block": {
+      //STORY SECTION @COMPONENT
+    }
+  }
+}

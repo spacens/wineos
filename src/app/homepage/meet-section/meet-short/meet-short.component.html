@@ -1,0 +1,35 @@
+<section class="section-meet">
+  <div class="container">
+    <div class="grid-flex">
+      <div class="col-sm-6 col-sm-offset-1">
+        <h1>Let’s <br> Meet UP</h1>
+        <p class="p-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et</p>
+        <div class="form-location">
+          <div class="input-ico">
+            <label for="location"><i class="icon-send"></i></label>
+            <input type="text" id="location" [(ngModel)]="address" name="address" placeholder="Enter Location, City, or Zip">
+          </div>
+          <input (click)="find($event)" value="Find  Barefoot Near You" class="btn btn-yellow">
+        </div>
+      </div>
+
+      <div class="col-sm-3 col-sm-offset-1">
+        <h3>Also available in</h3>
+        <ul class="wine-list">
+          <li>
+            <a href="#wine-bubbly">
+              <img src="/assets/markup/images/img18.png" alt="">
+              <span class="caption">Bubbly</span>
+            </a>
+          </li>
+          <li>
+            <a href="#wine-spritzer">
+              <img src="/assets/markup/images/img19.png" alt="">
+              <span class="caption">Spritzer</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

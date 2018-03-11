@@ -1,0 +1,435 @@
+// ---------------------------------------------------------===
+// Our Wine page styles
+// ---------------------------------------------------------===
+
+.our-wine {
+    .heading {
+        background: $butterfly-bush;
+        padding: 27px 0 17px;
+
+        @include media('<tablet') {
+            padding: 22px 0 31px;
+        }
+
+        h1 {
+            transform: rotate(-12deg);
+            margin-bottom: 0;
+            position: relative;
+            z-index: 999;
+
+            @include media('<tablet') {
+                transform-origin: 0 0;
+                margin-bottom: -30px;
+                max-width: 257px;
+            }
+
+            .search-active + & {
+                z-index: 10;
+            }
+        }
+
+        .selected-wine {
+            font: 400 96px/0.84 $hwtartz;
+            color: $white;
+            display: inline-block;
+            margin: 13px 23px 20px 0;
+            letter-spacing: 2px;
+
+            @include media('<widescreen') {
+                font-size: 88px;
+            }
+
+            @include media('<desktop') {
+                font-size: 64px;
+            }
+
+            @include media('<tablet') {
+                font-size: 56px;
+            }
+
+            @include media('<xs-phone') {
+                font-size: 45px;
+            }
+
+            .close {
+                font-size: 40px;
+                display: inline-block;
+                vertical-align: middle;
+                margin-left: 20px;
+                position: relative;
+                z-index: 1;
+
+                &:before {
+                    content: '';
+                    position: absolute;
+                    top: 6px;
+                    left: 6px;
+                    right: 6px;
+                    bottom: 6px;
+                    border-radius: 100%;
+                    background: $white;
+                    z-index: -1;
+                }
+
+                @include media('<tablet') {
+                    margin-left: 0;
+                    font-size: 32px;
+                }
+
+                @include media('<xs-phone') {
+                    font-size: 24px;
+                }
+            }
+        }
+
+        .wine-list {
+            @include media('<tablet') {
+                justify-content: space-between;
+                margin: 0 -12px;
+            }
+
+            > li {
+                width: 107px;
+                padding-bottom: 15px;
+
+                @include media('<desktop') {
+                    width: 92px;
+                }
+
+                @include media('<tablet') {
+                    width: auto;
+                }
+            }
+
+            img {
+                margin-bottom: 20px;
+
+                @include media('<tablet') {
+                    width: 26px;
+                    margin-bottom: 11px;
+                }
+            }
+
+            .caption {
+                font-size: 18px;
+                color: $white;
+
+                @include media('<tablet') {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}
+
+.try-that {
+    background: $martinique;
+    position: relative;
+    text-align: center;
+    padding: 16px 0 10px;
+
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        height: 17px;
+        left: -9999px;
+        right: -9999px;
+        background-repeat: repeat-x;
+        background-position: 50% 0;
+    }
+
+    &:before {
+        bottom: 100%;
+        background-image: url('#{$image-path}/bg1-t.png');
+    }
+
+    &:after {
+        top: 100%;
+        background-image: url('#{$image-path}/bg1-b.png');
+    }
+
+    h3 {
+        color: $yellow-sea;
+        margin-bottom: 13px;
+    }
+
+    .btn-list {
+        max-width: 868px;
+        margin: 0 auto;
+    }
+}
+
+.wine-showcase {
+    padding: 130px 0 50px;
+    position: relative;
+
+    @include media('<desktop') {
+    padding: 100px 0 50px;
+    }
+
+    @include media('<tablet') {
+        padding: 43px 0 50px;
+    }
+
+    h1 {
+        @extend %h1;
+        margin-bottom: -71px;
+        max-width: 412px;
+
+        @include media('<tablet') {
+            margin-bottom: -40px;
+        }
+    }
+
+    .wine-list {
+        > li {
+            width: 25%;
+            padding-bottom: 53px;
+
+            @include media('<640px') {
+                width: 33.33%;
+                padding-bottom: 14px;
+            }
+
+            @include media('<564px') {
+                width: 50%;
+            }
+        }
+    }
+
+    .slider-wine {
+        width: 100%;
+        padding-bottom: 40px;
+
+        .slick-slide {
+            outline: none !important;
+        }
+
+        img {
+            margin: 0 auto 35px;
+
+            @include media('<tablet') {
+                width: 59px;
+                margin-bottom: 20px;
+            }
+        }
+
+        .slick-dots {
+            position: absolute;
+            bottom: 3px;
+            left: 0;
+            right: 0;
+        }
+
+        .total-slide {
+            position: absolute;
+            bottom: 14px;
+            left: 0;
+            right: 0;
+            font-size: 10px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+    }
+
+    .foot {
+        @extend %clearfix;
+
+        @include media('>=tablet') {
+            display: none;
+        }
+
+        .total {
+            float: left;
+            font: 400 19px/0.84 $hwtartz;
+            color: $lipstick;
+            padding-top: 15px;
+        }
+
+        .btn {
+            float: right;
+        }
+    }
+
+    .paging {
+        position: absolute;
+        top: -2px;
+        left: 0;
+        right: 0;
+
+        + .container {
+            padding-top: 91px;
+        }
+    }
+}
+
+.stripe-green {
+    @include stripebg($persian-green, green, 105px, 23px);
+}
+
+.stripe-orange {
+    @include stripebg($yellow-sea, orange, 105px, 23px);
+}
+
+.wine-promo {
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        position: relative;
+
+        &:after {display: none;}
+    }
+
+    .desc {
+        width: 45%;
+        padding-left: 8.5%;
+
+        @include media('<tablet') {
+            padding-left: 0;
+        }
+
+        .wine-name {
+            @include media('>=tablet') {
+                @include box-align(vc);
+                right: 0;
+                width: 55%;
+                z-index: 3;
+            }
+
+            @include media('<tablet') {
+                text-align: center;
+                padding-left: 6px;
+            }
+        }
+    }
+
+    .img-wrap {
+        width: 55%;
+        padding: 0 19px;
+        position: relative;
+
+        img {
+            @include box-align(vhc);
+            padding: 0 15px;
+
+            @include media('<widescreen') {
+                max-height: 421px;
+                width: auto;
+            }
+
+            @include media('<desktop') {
+                max-height: 361px;
+            }
+
+            @include media('<tablet') {
+                max-height: 217px;
+            }
+
+            @include media('<xs-phone') {
+                max-height: 165px;
+            }
+        }
+    }
+
+    h1 {
+        transform: rotate(-12deg);
+        transform-origin: 0 0;
+        color: $martinique;
+        margin: -18px 0 1px -114px;
+        max-width: 616px;
+
+        @include media('<widescreen') {
+            margin-left: -90px;
+            margin-right: -40px;
+        }
+
+        @include media('<desktop') {
+            margin-left: -66px;
+        }
+
+        @include media('<tablet') {
+            font-size: 35px;
+            margin: 0 0 26px;
+            width: 200px;
+        }
+
+        @include media('<xs-phone') {
+            font-size: 26px;
+        }
+    }
+
+    p {
+        max-width: 400px;
+
+        @include media('<tablet') {
+            display: none;
+        }
+    }
+
+    [class*="u-"] {
+        text-transform: uppercase;
+        padding-bottom: 16px;
+
+        @include media('>=tablet') {
+            font: 28px/0.84 $hwtartz;
+            left: 10px;
+            @include box-align(vc);
+        }
+
+        @include media('>=desktop') {
+            font-size: 32px;
+        }
+
+        @include media('<tablet') {
+            font-size: 13px;
+            line-height: 1;
+            font-weight: 500;
+            position: relative;
+            padding-bottom: 7px;
+            margin-bottom: 16px;
+        }
+
+        &:before {
+            content: '\e913';
+            font: 7px/1 $icomoon;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+
+            @include media('<tablet') {
+                font-size: 5px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        + [class*="u-"] {
+            @include media('>=tablet') {
+                right: 19px;
+                left: auto;
+            }
+
+            &:before {
+                content: '\e912';
+                font-size: 9px;
+
+                @include media('<tablet') {
+                    font-size: 6px;
+                }
+            }
+        }
+    }
+
+    .u-green-l {
+        &:before {color: #6effd6;}
+    }
+
+    .u-yellow {
+        &:before {color: #ffd24d;}
+    }
+
+    .u-green {
+        &:before {color: #94a740;}
+    }
+}

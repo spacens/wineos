@@ -1,0 +1,29 @@
+<main class="our-wine">
+    <app-wine-types [wineChangeStream]="wineSelectStream" (wineSortChanged)="onWineSortChange($event)"></app-wine-types>
+
+  <app-tag-list (onChange)="onTagChange($event)"></app-tag-list>
+    <app-wine-showcase *ngIf="!selectedWineSort || selectedWineSort.sameTitle('red')"
+                       sortOfWine="red"
+                       title="Red wine" [selectedTags]="selectedTags"></app-wine-showcase>
+
+  <app-wine-promo *ngIf="!selectedWineSort && !selectedTags.length" [winePromo]="winePromos[0]"></app-wine-promo>
+
+  <app-wine-showcase *ngIf="!selectedWineSort || selectedWineSort.sameTitle('white')"
+                     sortOfWine="white" title="White wine" [selectedTags]="selectedTags"></app-wine-showcase>
+    <app-wine-promo *ngIf="!selectedWineSort  && !selectedTags.length" [winePromo]="winePromos[0]"></app-wine-promo>
+
+    <app-wine-showcase *ngIf="!selectedWineSort || selectedWineSort.sameTitle('pink')"
+                       title="Pink wine"
+                       sortOfWine="pink" [selectedTags]="selectedTags"></app-wine-showcase>
+    <app-wine-promo *ngIf="!selectedWineSort  && !selectedTags.length" [winePromo]="winePromos[1]"></app-wine-promo>
+
+    <app-wine-showcase *ngIf="!selectedWineSort || selectedWineSort.sameTitle('bubbly')"
+                       sortOfWine="bubbly"
+                       title="Bubbly wine" [selectedTags]="selectedTags"></app-wine-showcase>
+
+    <app-wine-promo *ngIf="!selectedWineSort  && !selectedTags.length" [winePromo]="winePromos[0]"></app-wine-promo>
+
+    <app-wine-showcase *ngIf="!selectedWineSort || selectedWineSort.sameTitle('Spritzer')"
+                       sortOfWine="spritzer"
+                       title="Spritzer" [selectedTags]="selectedTags"></app-wine-showcase>
+</main>

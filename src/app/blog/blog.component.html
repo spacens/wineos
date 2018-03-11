@@ -1,0 +1,16 @@
+
+<main>
+  <app-large-banner [content]="topBanner"></app-large-banner>
+
+
+  <div class="blog-content">
+    <div class="container">
+      <app-slider *ngFor="let cat of categoriesWithItems"
+                  [items]="cat.items"
+                  [title]="cat.category"
+                  [allLink]="['/blog', cat.category]"
+                  color="blue">
+      </app-slider>
+    </div>
+  </div>
+</main>

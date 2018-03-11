@@ -1,0 +1,17 @@
+<main>
+  <app-large-banner *ngIf="largeBannerContent" [content]="largeBannerContent"></app-large-banner>
+  <div class="story-block">
+    <div class="container">
+      <!-- story block -->
+      <app-story-section  *ngIf="storyBlockContent" [content]="storyBlockContent"></app-story-section>
+
+
+      <app-list-story  *ngIf="listBlockContent" [content]="listBlockContent"></app-list-story>
+
+
+
+      <app-story-section *ngIf="winningAwardsBlockContent" [content]="winningAwardsBlockContent"></app-story-section>
+      <app-story-section *ngIf="wineMakerBlockContent" [content]="wineMakerBlockContent"></app-story-section>
+    </div>
+  </div>
+</main>

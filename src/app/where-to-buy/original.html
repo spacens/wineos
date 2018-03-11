@@ -1,0 +1,107 @@
+<div class="col-sm-11 col-md-11 col-lg-11">
+    <h2 *ngIf="wineFinderData?.field_wine_finder_title['0']?.value">
+        {{wineFinderData?.field_wine_finder_title['0']?.value}}
+    </h2>
+    <h4 *ngIf="wineFinderData?.field_wine_finder_description['0']?.value"
+        [innerHtml]="wineFinderData?.field_wine_finder_description['0']?.value">
+    </h4>
+    <div class="pull-down">
+        <p><strong>Store Locator:</strong> To search for a product
+            fill out the search form below and click the "Find" button.
+            Results searched by distance are approximate.</p>
+        <form class="default-form">
+            <div class="form-group" >
+                <label for="flavor">Flavor</label>
+                <select id="flavor" class="flavorSelect wtbField fieldInput
+            fieldSelect parsley-success"
+                        [(ngModel)]="object" [ngModelOptions]="{standalone: true}" ngDefaultControl
+                        (change)=getAlcohol(object)>
+                    <option [ngValue]="object" *ngFor="let object of wineArray" >
+                        {{object.label}}</option>
+                </select>
+            </div>
+            <div class="form-group left-padd-buy" >
+                <label class="radio-inline" *ngFor="let data of accounts; let i = index" >
+                    <input type="radio" name="wheree"
+                           [value]="data.value" [(ngModel)]="wheree"
+                           [ngModelOptions]="{standalone: true}" ngDefaultControl
+                           (click)="setWhere(data.value)" >{{data.label}}
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="zipCode">Zip Code</label>
+                <input type="number" placeholder="Enter Zip Code" [disabled]="zipCheck"
+                       class="form-control" id="zipCode" [(ngModel)]="zipCode"
+                       [ngModelOptions]="{standalone: true}" ngDefaultControl
+                       (ngModelChange)=count(zipCode) required><span style="color:red;">{{errormsg}}</span>
+            </div>
+            <div class="form-group">
+                <label for="flavor">Miles to Search</label>
+                <select id="radius" class="radiusSelect wtbField fieldInput fieldSelect"
+                        [(ngModel)]="radiuss" [ngModelOptions]="{standalone: true}"
+                        ngDefaultControl (change)=setRadius(radiuss)>
+                    <option [ngValue]="radiuss" *ngFor="let radiuss of radiusval" >
+                        {{radiuss.label}}</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-default"
+                    (click)="submit(zipCode)">{{wineFinderFormBtnTxt}}</button>
+            <div><span style="color:red;">{{accountEmpty}}</span></div>
+        </form>
+        <p [innerHtml]="wineFinderData?.field_wine_finder_cnt_below_frm['0']?.value"
+           *ngIf="wineFinderData?.field_wine_finder_cnt_below_frm['0']?.value"></p>
+    </div>
+</div>
+<div class="row" >
+    <modal #myModal modalClass="modal-lg"
+           [closeOnEscape]="true" [hideCloseButton]="false" (onClose)="closeme()" cancelButtonLabel="Close" >
+        <modal-content >
+            <div class="map_btn_grp">
+                <button (click) = "showMapMenu()">Map</button>
+                <button (click) = "showListingMenu()">Listings</button>
+            </div>
+            <div class="{{toggleclass}}">
+                <div class="sidebar">
+                    <div class="sidebar-logo"><wineos-header-logo></wineos-header-logo></div>
+                    <div class="list-wrap" style="overflow-y: auto;  height: 100%;">
+                        <ul class="listing" >
+                            <li class="listing_item" *ngFor="let wine_location of locationdata;
+              let i = index;" (click)="clickedMarker1(i)" >
+                                <div class="marker">
+                                    <img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi-dotless.png" />
+                                    <span style="color:black;position: absolute;
+                  top:35%; left:50%; transform: translate(-50%,-50%);
+                font-size: 14px;"><b>{{i+1}}</b></span></div>
+                                <div class="acctInfo">{{wine_location.name}}
+                                    {{wine_location.address}}, {{wine_location.city}},
+                                    {{wine_location.state}} {{wine_location.zipCode}}</div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="map_menu" (click)="toggleSideMenu()"><span></span></div>
+                </div>
+            </div>
+            <sebm-google-map
+                    [latitude]="lat"
+                    [longitude]="lng"
+                    [zoom]="zoom"
+                    [disableDefaultUI]="false"
+                    [zoomControl]=true
+                    *ngIf="show" [style.marginRight.px]='mapclass' #map >
+                <sebm-google-map-marker
+                <sebm-google-map-marker
+                        *ngFor="let m of locationdata; let i = index"
+                        [latitude]="m.latitude"
+                        [longitude]="m.longitude"
+                        [label]="(i+1).toLocaleString()"
+                        [markerDraggable]="false"
+                        (markerClick)="clickedMarker(infoWindow)"
+                >
+                    <sebm-google-map-info-window style="color:#000000;"  #infoWindow>
+                        <strong style="color:black;">{{m.name}}<br>{{m.address}}, {{m.city}}, {{m.state}} {{m.zipCode}}</strong>
+                    </sebm-google-map-info-window>
+                </sebm-google-map-marker>
+            </sebm-google-map>
+        </modal-content>
+    </modal>
+</div>

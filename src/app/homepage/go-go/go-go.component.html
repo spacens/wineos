@@ -1,0 +1,18 @@
+<article class="media-article" style="background-image: url('/assets/markup/images/bg02.png');">
+  <div class="container">
+    <div class="grid-flex">
+      <div class="col-lg-4 col-sm-6 col-md-5 col-md-offset-1">
+        <h2>{{content.title}}</h2>
+        <p class="p-md" [innerHTML]="content.description"></p>
+        <a href="#" class="btn btn-green">{{content.buttonText}}</a>
+      </div>
+      <div class="col-sm-6 col-lg-offset-1">
+        <a [href]="content.buttonLink" class="img">
+          <img [src]="content.image" alt="">
+          <i class="btn-play"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</article>
+ 

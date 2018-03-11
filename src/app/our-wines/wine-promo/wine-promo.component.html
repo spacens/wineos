@@ -1,0 +1,15 @@
+<section class="wine-promo" [ngClass]="'wine-promo ' + winePromo.blockDesign">
+  <div class="container">
+    <div class="desc">
+      <h1>{{winePromo.title}}</h1>
+      <p class="p-md">{{winePromo.description}}</p>
+      <div class="wine-name">
+        <div class="u-green-l">{{winePromo.leftText}}</div>
+        <div class="u-yellow" *ngIf="winePromo.rightText">{{winePromo.rightText}}</div>
+      </div>
+    </div>
+    <div class="img-wrap">
+      <img [src]="winePromo.image" alt="">
+    </div>
+  </div>
+</section>

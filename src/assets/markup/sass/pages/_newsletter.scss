@@ -1,0 +1,176 @@
+// ---------------------------------------------------------===
+// Where to Buy page styles
+// ---------------------------------------------------------===
+
+.modal-active {
+    overflow: hidden !important;
+
+    &:after {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(#805080, 0.7);
+        z-index: 999;
+    }
+}
+
+.modal-wrap {
+    max-height: 100vh;
+    overflow: hidden;
+    overflow-y: auto;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    padding: 30px 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+
+    .modal-active &{
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
+.newsletter {
+    background: $martinique;
+    color: $white;
+    padding: 100px 0;
+    position: relative;
+
+    @include media('<tablet') {
+        padding: 50px 0;
+    }
+
+    &:before,
+    &:after {
+        background-image: url('#{$image-path}/bg20.png');
+        content: '';
+        position: absolute;
+        height: 16px;
+        left: 0;
+        right: 0;
+        bottom: 99%;
+        background-repeat: repeat-x;
+    }
+
+    &:after {
+        background-image: url('#{$image-path}/bg21.png');
+        bottom: auto;
+        top: 99%;
+        height: 23px;
+    }
+
+    .inner {
+        max-width: 836px;
+        margin: 0 auto;
+        padding: 0 38px;
+    }
+
+    .heading {
+        font-size: 19px;
+        line-height: 1.526;
+        margin: 0 0 54px;
+
+        @include media('<tablet') {
+            font-size: 12px;
+            text-align: center;
+            margin: 0 0 25px;
+        }
+    }
+
+    h1 {
+        @extend %h1;
+        margin: 49px 0 18px -100px;
+
+        @include media('<desktop') {
+            margin: 30px 0 18px;
+        }
+
+        @include media('<tablet') {
+            margin: 13px 0 6px -23px;
+            font-size: 48px;
+            text-align: left;
+        }
+    }
+
+    .close {
+        color: $white;
+        position: absolute;
+        right: 50px;
+        top: 20px;
+        font-size: 16px;
+
+        @include media('<tablet') {
+            right: 23px;
+            top: 7px;
+            font-size: 14px;
+        }
+    }
+
+    .form-group {
+        @include media('<tablet') {
+            margin: 0 0 34px;
+        }
+    }
+
+}
+
+.checkbox {
+    letter-spacing: -5px;
+    margin: 7px 0 0;
+
+    > * {
+        letter-spacing: 0;
+    }
+
+    input[type="checkbox"] {
+        position: absolute;
+        left: -9999px;
+        overflow: hidden;
+
+        &:checked + .fake-checkbox {
+            .icon-tick {
+                opacity: 1;
+            }
+        }
+    }
+
+    .txt {
+        display: inline-block;
+        vertical-align: middle;
+        width: calc(100% - 28px);
+        padding-left: 20px;
+        line-height: 1.313;
+
+        @include media('<tablet') {
+            padding-left: 14px;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+    }
+
+    .fake-checkbox {
+        display: inline-block;
+        vertical-align: middle;
+        @include size(28px);
+        background: $white;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .icon-tick {
+        color: $persian-green;
+        line-height: 28px;
+        display: block;
+        text-align: center;
+        font-size: 20px;
+        opacity: 0;
+    }
+}

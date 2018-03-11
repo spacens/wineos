@@ -1,0 +1,331 @@
+// ---------------------------------------------------------===
+// Send A Cheers page styles
+// ---------------------------------------------------------===
+
+.hero-cheer {
+    @extend .hero;
+    padding: 159px 0 48px;
+    position: relative;
+    color: $white;
+    text-align: left;
+
+    @include media('<tablet') {
+        padding: 63px 0 43px;
+    }
+
+    .img-hero {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-size: cover;
+        background-position: 50% 50%;
+    }
+
+    h1 {
+        margin: 51px -11px 76px 0;
+
+        @include media('<tablet') {
+            margin: 33px -11px 59px 0;
+        }
+    }
+
+    p {
+        max-width: 440px;
+    }
+
+    .explore {
+        text-align: right;
+        max-width: 391px;
+        padding: 95px 0 60px;
+
+        @include media('<tablet') {
+            padding: 40px 0;
+        }
+
+        a {
+            @extend %h1;
+            display: inline-block;
+            font: 48px/1 $hwtartz;
+            text-transform: uppercase;
+            color: $white;
+            position: relative;
+            padding-right: 57px;
+
+            &:after {
+                content: "\e916";
+                font: 114px/1 $icomoon;
+                color: $lipstick;
+                position: absolute;
+                top: 30px;
+                right: 0;
+                transform: rotate(30deg);
+
+                @include media('<tablet') {
+                    font-size: 84px;
+                }
+            }
+
+            &:hover {
+                color: $lipstick;
+            }
+        }
+    }
+}
+
+.hero-cheer-play {
+    @include stripebg($butterfly-bush, white02, 35px, 35px)
+    padding: 44px 0 39px;
+    color: $mustard;
+    margin-bottom: -24px;
+
+    @include media('<desktop') {
+        padding: 44px 0 60px;
+    }
+
+    &:after {
+        @include media('>=tablet') {
+            height: 58px;
+        }
+    }
+
+    .grid-flex {
+        align-items: center;
+    }
+
+    .video {
+        display: block;
+        position: relative;
+
+        @include media('<desktop') {
+            margin-bottom: 40px;
+        }
+
+        img {
+            width: 100%;
+        }
+    }
+
+    h1 {
+        @extend %h1;
+        margin: 34px 0 5px;
+        font-size: 140px;
+
+        @include media('<tablet') {
+            font-size: 102px;
+        }
+    }
+
+    .btn-wrap {
+        max-width: 260px;
+
+        .btn {
+            display: block;
+            margin-bottom: 24px;
+        }
+    }
+}
+
+.cheers-section {
+    background: #da3d66 url('#{$image-path}/bg13.png') repeat-x 50% 0;
+    padding: 68px 0 78px;
+
+    @include media('<tablet') {
+        padding-bottom: 66px;
+        background-position: -200px 0;
+    }
+
+    .filter {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 44px;
+
+        h3 {
+            color: $mustard;
+        }
+
+        .btn-list {
+            margin: 0 -7px;
+
+            li {
+                margin: 0 7px 16px;
+            }
+        }
+
+        .btn {
+            min-width: 122px;
+        }
+    }
+
+    .grid-flex {
+        margin: 0 -8px;
+
+        [class*="col-"] {
+            padding: 0 8px;
+        }
+    }
+
+    .btn-center {
+        padding-top: 13px;
+        position: relative;
+
+        @include media('<tablet') {
+            padding-bottom: 36px;
+        }
+
+        .btn {
+            min-width: 197px;
+        }
+
+        .powered-by {
+            position: absolute;
+
+            @include media('>=tablet') {
+                right: 0;
+                bottom: 2px;
+            }
+
+            @include media('<tablet') {
+                left: 50%;
+                bottom: -8px;
+                transform: translateX(-50%);
+            }
+        }
+    }
+}
+
+.card-cheer {
+    display: block;
+    margin-bottom: 30px;
+
+    &:hover {
+        img {
+            transform: scale(1.05);
+        }
+    }
+
+    .img {
+        position: relative;
+        overflow: hidden;
+
+        img {
+            @include animate(transform);
+        }
+    }
+
+    .caption {
+        font: 40px/1 $hwtartz;
+        text-transform: uppercase;
+        text-align: center;
+        color: $white;
+        padding: 20px 15px;
+
+        @include media('<tablet') {
+            font-size: 23px;
+            padding: 13px 15px;
+            margin-bottom: 14px;
+        }
+    }
+}
+
+.btn-gif {
+    @extend .btn-play;
+    background-image: url('#{$image-path}/gif.svg');
+}
+
+.popup {
+    @include animate(opacity visibility);
+    @include box-align(hc);
+    top: 95px;
+    background: $lipstick;
+    padding: 130px 90px 67px;
+    max-width: 711px;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+
+    @include media('<tablet') {
+        width: calc(100% - 40px);
+    }
+
+    @include media('<540px') {
+        padding: 99px 31px 42px;
+    }
+
+    .popup-active & {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .close {
+        color: $white;
+        position: absolute;
+        top: 30px;
+        left: 35px;
+        font-size: 23px;
+    }
+
+    h2 {
+        @extend %h1;
+        font-size: 96px;
+        line-height: 0.84;
+        color: $white;
+        max-width: 436px;
+        margin-bottom: 23px;
+
+        @include media('<tablet') {
+            font-size: 68px;
+        }
+
+        @include media('<540px') {
+            font-size: 48px;
+        }
+    }
+
+    .share-hold {
+        max-width: 480px;
+        margin: 0 auto;
+        text-align: center;
+
+        .btn {
+            min-width: 258px;
+            margin-bottom: 17px;
+            font-size: 19px;
+            padding: 11px 32px;
+
+            @include media('<540px') {
+                min-width: 100px;
+                width: 100%;
+            }
+        }
+
+        h4 {
+            font-size: 30px;
+            color: $mustard;
+            margin: 12px 0 18px;
+        }
+    }
+
+    .social-network {
+        font-size: 65px;
+        line-height: 1;
+
+        @include media('<540px') {
+            font-size: 44px;
+        }
+
+        a {
+            display: inline-block;
+            vertical-align: top;
+            margin: 0 6px 10px;
+            color: $white;
+
+            @include media('<540px') {
+                margin: 0 2px 5px;
+            }
+        }
+    }
+}

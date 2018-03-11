@@ -1,0 +1,139 @@
+// ---------------------------------------------------------===
+// LGBTQ page styles
+// ---------------------------------------------------------===
+
+.section-event {
+    padding: 79px 0 56px;
+
+    @include media('<tablet') {
+        padding: 55px 0;
+    }
+
+    .heading {
+        text-align: center;
+        max-width: 640px;
+        margin: 0 auto 11px;
+
+        @include media('<widescreen') {
+            margin-bottom: 33px;
+        }
+
+        @include media('<tablet') {
+            max-width: 400px;
+            margin-bottom: 26px;
+        }
+
+        h2 {
+            margin-bottom: 19px;
+
+            @include media('<tablet') {
+                font-size: 28px;
+                margin-bottom: 8px;
+            }
+        }
+
+        p {
+            margin-bottom: 0;
+        }
+    }
+
+    .title-wrap {
+        display: flex;
+        align-items: center;
+        margin-bottom: 17px;
+        height: 52px;
+
+        h3 {
+            margin: 0 15px 0 0;
+        }
+
+        .nice-select {
+            display: inline-block;
+            width: auto;
+
+            .current {
+                font-size: 32px;
+                font-family: $hwtartz;
+
+                @include media('<tablet') {
+                    font-size: 24px;
+                }
+            }
+        }
+    }
+}
+
+.block-purple,
+.block-blue {
+    .title-wrap {
+        h3 {
+            color: $white;
+        }
+    }
+
+    .link-decor {
+        color: $white;
+
+        &:before {
+            background: $white;
+        }
+    }
+
+    .blog {
+        h3 {
+            a {
+                color: $white;
+            }
+        }
+    }
+}
+.block-purple {
+    @include stripebg($strikemaster, purple01, 30px, 30px);
+}
+
+.block-blue {
+    @include stripebg($butterfly-bush, blue02, 30px, 30px);
+}
+
+.slide-history {
+    border-top: 2px solid $mustard;
+
+    .slick-slide {
+        margin-top: 67px;
+        position: relative;
+
+        @include media('<tablet') {
+            margin-top: 53px;
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            top: -67px;
+            width: 2px;
+            height: 16px;
+            background: $mustard;
+            left: 50%;
+            transform: translalteX(-50%);
+        }
+
+        .year {
+            position: absolute;
+            top: -35px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font: 32px/.84 $hwtartz;
+            color: $lipstick;
+
+            @include media('<tablet') {
+                font-size: 24px;
+                top: -31px;
+            }
+        }
+    }
+
+    .blog {
+        overflow: hidden;
+    }
+}

@@ -1,0 +1,392 @@
+// ---------------------------------------------------------===
+// Header styles
+// ---------------------------------------------------------===
+
+#header {
+    background: $white;
+    padding: 30px 0 25px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 999;
+
+    @include media('<desktop') {
+        padding: 19px 0;
+        background: $white url('#{$image-path}/bg-header.png') repeat-x 50% 0;
+    }
+
+    &.alt {
+        background: $butterfly-bush;
+
+        .logo {
+            .st0 {
+                fill: $white;
+            }
+        }
+    }
+
+    &.bg-purple {
+        background-color: $strikemaster;
+    }
+
+    &.bg-green {
+        background-color: $persian-green;
+    }
+
+    > .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+
+        &:after { display: none; }
+    }
+
+    .logo {
+        width: 218px;
+        position: relative;
+        z-index: 10;
+
+        @include media('<desktop') {
+            width: 184px;
+        }
+
+        @include media('<tablet') {
+            width: 129px;
+        }
+
+        svg {
+            vertical-align: top;
+            width: 218px;
+            height: 73px;
+
+            @include media('<desktop') {
+                width: 184px;
+                height: 61px;
+            }
+
+            @include media('<tablet') {
+                width: 129px;
+                height: 43px;
+            }
+        }
+
+        .st0 {
+            @include animate(fill);
+            fill: #3f2c4f;
+
+            .nav-active & {
+                @include media('<desktop') {
+                    fill: $white;
+                }
+            }
+        }
+    }
+
+    + * {
+        padding-top: 123px;
+
+        @include media('<desktop') {
+            padding-top: 81px;
+        }
+    }
+}
+
+main {
+    padding-top: 123px;
+
+    @include media('<desktop') {
+        padding-top: 81px;
+    }
+}
+
+.nav {
+    font-weight: 500;
+    padding-top: 17px;
+
+    @include media('<desktop') {
+        @include animate(opacity visibility);
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        text-align: right;
+        background: $martinique;
+        font-family: $hwtartz;
+        font-size: 36px;
+        line-height: 0.92;
+        padding: 100px 16px 20px;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    @include media('<tablet') {
+        padding: 79px 19px 32px;
+    }
+
+    .nav-active & {
+        @include media('<desktop') {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    &:after {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        height: 7px;
+        background: url('#{$image-path}/bg-nav.png') repeat-x 50% 0;
+
+        @include media('<desktop') {
+            content: '';
+        }
+    }
+
+    ul {
+        @extend %listreset;
+    }
+
+    > ul {
+        @include media('>=desktop') {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        > li {
+            margin-left: 49px;
+
+            @include media('<widescreen') {
+                margin-left: 20px;
+            }
+
+            @include media('<desktop') {
+                margin: 0 0 20px;
+            }
+
+            &.active > a,
+            > a:hover {
+                &:after {
+                    left: 0;
+                    right: 0;
+                }
+
+                @include media('<desktop') {
+                    color: $lipstick;
+                }
+            }
+
+            > a {
+                position: relative;
+                display: block;
+                padding-bottom: 7px;
+
+                &:after {
+                    @include animate(left right);
+                    position: absolute;
+                    bottom: 0;
+                    left: 50%;
+                    right: 50%;
+                    height: 6px;
+                    background: url('#{$image-path}/bg-border-menu.svg') no-repeat 0 0/auto 6px;
+
+                    @include media('>=desktop') {
+                        content: '';
+                    }
+                }
+
+                &.search-opener {
+                    &:after {display: none;}
+                }
+            }
+        }
+    }
+
+    a {
+        @include media('<desktop') {
+            color: $white;
+        }
+
+        #header.alt & {
+            @include media('>=desktop') {
+                color: $white;
+            }
+        }
+    }
+
+    .search-opener {
+        font-size: 23px;
+        margin-left: 21px;
+
+        @include media('<desktop') {
+            font-size: 33px;
+        }
+    }
+}
+
+.search-panel {
+    @include animate(opacity visibility);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: url('#{$image-path}/bg-search.png') repeat-x 50% 0;
+    color: $white;
+    padding: 120px 0 89px;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 10;
+
+    @include media('<tablet') {
+        padding: 73px 0 43px;
+        background-size: auto 100%;
+    }
+
+    .search-active & {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .close {
+        position: absolute;
+        top: 66px;
+        right: 63px;
+        line-height: 1;
+        color: $white;
+
+        @include media('<widescreen') {
+            right: 20px;
+        }
+
+        @include media('<tablet') {
+            top: 38px;
+        }
+
+        &:hover {
+            color: $lipstick;
+        }
+    }
+
+    .search-box {
+        position: relative;
+        max-width: 870px;
+        margin: 0 auto;
+
+        label {
+            position: absolute;
+            left: 0;
+            top: 13px;
+            color: $strikemaster;
+            font-size: 24px;
+            line-height: 1;
+
+            @include media('<tablet') {
+                font-size: 14px;
+                top: 7px;
+            }
+        }
+
+        input {
+            border: none;
+            border-bottom: 2px solid $strikemaster;
+            width: 100%;
+            background: none;
+            border-radius: 0;
+            font-size: 32px;
+            padding: 5px 0 8px 37px;
+            @include placeholder {
+                color: $white;
+            }
+
+            @include media('<tablet') {
+                font-size: 15px;
+                padding: 6px 0 6px 23px;
+            }
+
+            &:-webkit-autofill {
+                -webkit-box-shadow: 0 0 0 30px $martinique inset;
+                -webkit-text-fill-color: $white !important;
+            }
+        }
+    }
+}
+
+.nav-opener {
+    display: inline-block;
+    vertical-align: top;
+    width: 16px;
+    height: 13px;
+    position: relative;
+    border-radius: 3px;
+    z-index:  10;
+
+    @include media('>=desktop') {
+        display: none;
+    }
+
+    .search-active & {
+        display: none;
+    }
+
+    &:before,
+    &:after,
+    & span {
+        background: $martinique;
+        border-radius: 10px;
+        position: absolute;
+        top: 8px;
+        left: 0;
+        right: 0;
+        height: 3px;
+        margin-top: -2px;
+        transition: all 0.2s linear;
+
+        #header.alt & {
+            background: $white;
+        }
+
+        .nav-active & {
+            background: $white;
+        }
+    }
+
+    &:before,
+    &:after {
+        content: '';
+        top: 2px;
+        left: 2px;
+    }
+
+    &:after {
+        top: 14px;
+        left: 1px;
+    }
+
+    &:hover {
+        &:before,
+        &:after,
+        span {
+            background: $lipstick;
+        }
+    }
+
+    .nav-active & {
+        &:after,
+        &:before {
+            transform: rotate(45deg);
+            top: 50%;
+            left: 0;
+            right: 0;
+        }
+
+        &:after {
+            transform: rotate(-45deg);
+        }
+
+        span {
+            opacity:0 ;
+        }
+    }
+}

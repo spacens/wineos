@@ -1,0 +1,19 @@
+<section class="section-meet">
+  <div class="container">
+    <div class="grid-flex">
+      <div class="col-sm-7 col-sm-offset-1 col-lg-6 col-lg-offset-2">
+        <h1>Let’s <br> Meet UP</h1>
+        <div class="form-location">
+          <div class="input-ico">
+            <label for="location"><i class="icon-send"></i></label>
+            <input type="text" id="location" [(ngModel)]="address" name="address" placeholder="Enter Zip">
+          </div>
+          <input (click)="find($event)" value="Find Barefoot Near You" class="btn btn-yellow">
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <img src="/assets/markup/images/img08.png" class="img-center" alt="">
+      </div>
+    </div>
+  </div>
+</section>

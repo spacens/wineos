@@ -1,0 +1,23 @@
+<main>
+  <div class="headline bg-purple">
+    <div class="container">
+      <h1>FAQ</h1>
+    </div>
+  </div>
+  <div class="faq-section">
+    <div class="container">
+      <div class="grid">
+        <div class="col-sm-8 col-sm-offset-1">
+          <h2>General</h2>
+          <ul class="faq-accordion">
+
+            <li *ngFor="let faq of faqList">
+              <a  class="opener">{{faq.field_panel_title}}</a>
+              <div class="slide" [innerHTML]="faq.field_panel_body_text"></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

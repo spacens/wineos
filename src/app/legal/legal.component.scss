@@ -1,0 +1,17 @@
+.legal-page {
+  &.content {
+    padding-top: 90px;
+
+    .row {
+      margin: 0;
+    }
+  }
+
+  #maincontent {
+    margin: 0 auto;
+    max-width: 900px;
+    padding: 0;
+    display: block;
+    float: none;
+  }
+}

@@ -1,0 +1,21 @@
+<section class="wine-showcase" *ngIf="(wineList | winesByTags:selectedTags).length > 0">
+    <div class="container">
+        <h1>{{title}}</h1>
+        <ul class="wine-list">
+            <li *ngFor="let wine of wineList | winesByTags:selectedTags">
+                <div class="slider-wine">
+                    <div>
+                        <a [routerLink]="wine.url">
+                        <img [src]="wine.image" alt="">
+                        <span class="caption">{{wine.title}}</span>
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+
+        </ul>
+    </div>
+</section>
+
+

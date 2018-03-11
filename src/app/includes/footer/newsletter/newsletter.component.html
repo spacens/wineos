@@ -1,0 +1,60 @@
+<div class="inner">
+    <div class="heading">
+        <h1>Newsletter</h1>
+        <p>Want the inside scoop on all things Barefoot? Sign up for Footnotes! Find out about all the cool things we're
+            up to, like local events, wine tips, recipes and new products!</p>
+
+        <div class="message">
+            <span class="help-block" *ngIf="newsletterMessage">{{newsletterMessage}}</span>
+            <span *ngIf="newsletterSubmitted" class="success">{{ newsletterSubmitted }}</span>
+        </div>
+    </div>
+    <form name="newsletterForm" id="newsletterForm" (ngSubmit)="newsletterSubmit()" [formGroup]="newsletterForm" class="contact-form form-validation">
+        <div class="form-cols">
+            <div class="col">
+                <div class="form-group">
+                    <input type="text" name="firstName" formControlName="firstName"
+                           required placeholder="First Name"/>
+                    <span *ngIf="formErrors.firstName" class="help-block">{{ formErrors.firstName }}</span>
+                </div>
+                <div class="form-group">
+
+                    <input type="text" name="lastName" formControlName="lastName"
+                           required placeholder="Last Name"/>
+                    <span *ngIf="formErrors.lastName" class="help-block">{{ formErrors.lastName }}</span>
+                </div>
+                <div class="form-group">
+
+                    <input type="email" name="email" formControlName="email" email
+                           required placeholder="E-mail"/>
+                    <span *ngIf="formErrors.email" class="help-block">{{ formErrors.email }}</span>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="form-group">
+
+                    <input type="date" name="birthday" formControlName="birthday"
+                           placeholder="yyyy-mm-dd" required/>
+                    <span *ngIf="formErrors.birthday" class="help-block">{{ formErrors.birthday }}</span>
+                </div>
+                <div class="form-group">
+
+                    <input type="text" name="zipCode" [textMask]="{mask: zipMask}" formControlName="zipCode" placeholder="Zip" required/>
+                    <span *ngIf="formErrors.zipCode" class="help-block">{{ formErrors.zipCode }}</span>
+                </div>
+
+                <div class="form-group">
+                    <input id="consent" type="checkbox" name="consent" formControlName="consent" required/>
+                    <label for="consent" *ngIf="brandName"><span class="required">*</span> Yes, I'd like to
+                        receive the {{brandName}} newsletter.</label>
+                    <span *ngIf="formErrors.consent" class="help-block">{{ formErrors.consent }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="btn-wrap">
+            <input type="submit" class="btn btn-yellow" value="Submit">
+        </div>
+
+    </form>
+</div>

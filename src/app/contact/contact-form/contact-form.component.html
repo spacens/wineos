@@ -1,0 +1,799 @@
+
+  <h1>Contact Us</h1>
+  <div id="formHeaderWrapper" class="formHeaderWrapper row group">
+    <div id="formHeaderText" class="forHeaderChild contact-heading">
+      <p>
+        Thank you for visiting our {{brandName}} website. We'd love to hear your comments,
+        so please take a moment to provide the information below.
+        <ng-container *ngIf="phoneNo != null">
+          For further assistance you may also call us at
+          <a class="mobile" href="tel: {{phoneNo}}">{{phoneNo}}</a>, Monday through
+          Friday from 8-5 PST and Saturday from 9-3 PST.
+        </ng-container>
+      </p>
+    </div>
+    <div id="formHeaderWinefinder" class="forHeaderChild desktop">
+      Can't find your favorites? Check out our <a [routerLink]="['/our-wine']">Wine Finder</a>.
+    </div>
+    <div id="formHeaderPrivacypolicy" class="forHeaderChild desktop">
+      <a [routerLink]="['/privacy-policy']" target="_window">Read more about how we use your information</a>.
+    </div>
+  </div>
+  <div class="message">
+    <span *ngIf="contactSubmitted" class="success">{{ contactSubmitted }}</span>
+  </div>
+
+  <form id="contactUsForm" class="form desktop contact-form" (ngSubmit)="save()" [formGroup]="contactForm">
+    <div id="reasonCodeWrapper" class="row group form-group">
+      <label id="reasonCodeLabel" class="contactusField label" for="reasonCode">
+        What is the nature of your message?:<span class="required">*</span>
+      </label>
+      <div id="reasonCodeDropDownWrapper" class="contactusField fieldInput dropdownWrapper">
+        <select id="reasonCode" class="contactusField fieldInput fieldSelect nice-select" formControlName="nature" name="nature"
+                alt="Please select an option" data-parsley-required="true"
+                data-parsley-required-message="Nature of message is required."
+                data-parsley-trigger="change">
+          <option value="">Select One</option>
+          <option value="Praise-Comment-Inquiry">Product Praise, Comments and Inquiries</option>
+          <option value="Complaint">Complaint</option>
+          <option value="Rebate Status">Check Rebate Status</option>
+          <option value="Case Follow Up">Follow Up on Current Case</option>
+        </select>
+      </div>
+      <span *ngIf="formErrors.nature" class="help-block">{{ formErrors.nature }}</span>
+    </div>
+    <div id="rebateStatusWrapper" class="reasconCodeCheck row group rebatestatus form-group">
+      <p>To inquire about the status of a rebate you submitted, please call 888-259-6135 or log on to
+        <a href="http://mir.rebateresearch.com" rel="external">http://mir.rebateresearch.com</a>.
+      </p>
+    </div>
+    <div id="followUpCaseWrapper" class="reasconCodeCheck row casefollowup group form-group">
+      <p>If this is a follow up to an existing contact please provide the case number that
+        was given to you by our Consumer Relations team.
+      </p>
+      <div>
+        <label id="followUpCaseLabel" class="contactusField label" for="caseNumber">
+          Case ID#:<span class="required">*</span>
+        </label>
+        <input id="followUpCase" class="contactusField fieldInput" type="text" formControlName="case_id" name="case_id"
+               value="">
+        <span *ngIf="formErrors.case_id" class="help-block">{{ formErrors.case_id }}</span>
+      </div>
+    </div>
+    <div id="contactInfoText" class="contactusField reasconCodeCheck row general complaint form-group">
+      <strong>Contact Information</strong>
+    </div>
+    <div id="firstNameWrapper" class="reasconCodeCheck row group general complaint casefollowup form-group">
+      <label id="firstNameLabel" class="contactusField label" for="first_name">
+        First Name:<span class="required">*</span>
+      </label>
+      <input id="firstName" class="contactusField fieldInput" name="first_name" formControlName="first_name" type="text"/>
+      <span *ngIf="formErrors.first_name" class="help-block">{{ formErrors.first_name }}</span>
+    </div>
+    <div id="lastNameWrapper" class="reasconCodeCheck row group general complaint casefollowup form-group">
+      <label id="lastNameLabel" class="contactusField label" for="last_name">
+        Last Name:<span class="required">*</span>
+      </label>
+      <input id="lastName" class="contactusField fieldInput" name="last_name" formControlName="last_name"
+             type="text"/>
+      <span *ngIf="formErrors.last_name" class="help-block">{{ formErrors.last_name }}</span>
+    </div>
+    <div id="genderWrapper" class="reasconCodeCheck row group general complaint form-group">
+      <label id="genderLabel" class="contactusField label" for="gender">Gender:<span class="required">*</span></label>
+      <div id="genderDropDownWrapper" class="contactusField fieldInput dropdownWrapper">
+        <select id="gender" class="contactusField fieldInput fieldSelect nice-select" formControlName="gender" name="gender">
+          <option value="">Gender</option>
+          <option value="M">Male</option>
+          <option value="F">Female</option>
+          <option value="UNK">Decline to State</option>
+        </select>
+      </div>
+      <span *ngIf="formErrors.gender" class="help-block">{{ formErrors.gender }}</span>
+    </div>
+    <div id="dobWrapper" class="reasconCodeCheck row group general complaint form-group">
+      <label for="dobLabel" class="contactusField label">Date of Birth: <span class="required">*</span></label>
+      <input class="form-control" type="date" name="dob" formControlName="dob"
+             placeholder="yyyy-mm-dd"/>
+      <span *ngIf="formErrors.dob" class="help-block">{{ formErrors.dob }}</span>
+    </div>
+    <div id="emailWrapper" class="reasconCodeCheck row group general complaint casefollowup form-group">
+      <label id="emailLabel" class="contactusField label" for="email">Email:<span class="required">*</span></label>
+      <input id="email" class="contactusField fieldInput" name="email" type="email" formControlName="email"/>
+      <span *ngIf="formErrors.email" class="help-block">{{ formErrors.email }}</span>
+    </div>
+
+
+
+    <div id="countryWrapper" class="reasconCodeCheck row group general complaint form-group">
+      <label id="countryLabel" class="contactusField label" for="country">Country:<span class="required">*</span></label>
+      <div id="countryDropDownWrapper" class="contactusField fieldInput dropdownWrapper">
+        <select id="country" class="contactusField fieldInput fieldSelect nice-select" name="country" formControlName="country">
+          <option value="">Choose a Country</option>
+          <option value="USA">United States of America</option>
+          <option value="CAN">Canada</option>
+          <option value="AFG">Afghanistan</option>
+          <option value="ALB">Albania</option>
+          <option value="DZA">Algeria</option>
+          <option value="AND">Andorra</option>
+          <option value="AGO">Angola</option>
+          <option value="AIA">Anguilla</option>
+          <option value="ATA">Antarctica</option>
+          <option value="ATG">Antigua And Barbuda</option>
+          <option value="ARG">Argentina</option>
+          <option value="ARM">Armenia</option>
+          <option value="ABW">Aruba</option>
+          <option value="AUS">Australia</option>
+          <option value="AUT">Austria</option>
+          <option value="AZE">Azerbaijan</option>
+          <option value="BHS">Bahamas</option>
+          <option value="BHR">Bahrain</option>
+          <option value="BGD">Bangladesh</option>
+          <option value="BRB">Barbados</option>
+          <option value="BLR">Belarus</option>
+          <option value="BEL">Belgium</option>
+          <option value="BLZ">Belize</option>
+          <option value="BEN">Benin</option>
+          <option value="BMU">Bermuda</option>
+          <option value="BTN">Bhutan</option>
+          <option value="BOL">Bolivia</option>
+          <option value="BIH">Bosnia And Herzegowina</option>
+          <option value="BWA">Botswana</option>
+          <option value="BVT">Bouvet Island</option>
+          <option value="BRA">Brazil</option>
+          <option value="IOT">British Indian Ocean Territory</option>
+          <option value="BRN">Brunei Darussalam</option>
+          <option value="BGR">Bulgaria</option>
+          <option value="BFA">Burkina Faso</option>
+          <option value="BDI">Burundi</option>
+          <option value="KHM">Cambodia</option>
+          <option value="CMR">Cameroon</option>
+          <option value="CPV">Cape Verde</option>
+          <option value="CYM">Cayman Islands</option>
+          <option value="CAF">Central African Republic</option>
+          <option value="TCD">Chad</option>
+          <option value="CHL">Chile</option>
+          <option value="CHN">China</option>
+          <option value="CXR">Christmas Island</option>
+          <option value="CCK">Cocos (Keeling) Islands</option>
+          <option value="COL">Colombia</option>
+          <option value="COM">Comoros</option>
+          <option value="COG">Congo</option>
+          <option value="COK">Cook Islands</option>
+          <option value="CRI">Costa Rica</option>
+          <option value="CIV">Cote D"Ivoire</option>
+          <option value="HRV">Croatia</option>
+          <option value="CUB">Cuba</option>
+          <option value="CYP">Cyprus</option>
+          <option value="CZE">Czech Republic</option>
+          <option value="DNK">Denmark</option>
+          <option value="DJI">Djibouti</option>
+          <option value="DMA">Dominica</option>
+          <option value="DOM">Dominican Republic</option>
+          <option value="TMP">East Timor</option>
+          <option value="ECU">Ecuador</option>
+          <option value="EGY">Egypt</option>
+          <option value="SLV">El Salvador</option>
+          <option value="GNQ">Equatorial Guinea</option>
+          <option value="ERI">Eritrea</option>
+          <option value="EST">Estonia</option>
+          <option value="ETH">Ethiopia</option>
+          <option value="FLK">Falkland Islands (Malvinas)</option>
+          <option value="FRO">Faroe Islands</option>
+          <option value="FJI">Fiji</option>
+          <option value="FIN">Finland</option>
+          <option value="FRA">France</option>
+          <option value="FXX">France</option>
+          <option value="GUF">French Guiana</option>
+          <option value="PYF">French Polynesia</option>
+          <option value="ATF">French Southern Territories</option>
+          <option value="GAB">Gabon</option>
+          <option value="GMB">Gambia</option>
+          <option value="GEO">Georgia</option>
+          <option value="DEU">Germany</option>
+          <option value="GHA">Ghana</option>
+          <option value="GIB">Gibraltar</option>
+          <option value="GRC">Greece</option>
+          <option value="GRL">Greenland</option>
+          <option value="GRD">Grenada</option>
+          <option value="GLP">Guadeloupe</option>
+          <option value="GUM">Guam</option>
+          <option value="GTM">Guatemala</option>
+          <option value="GIN">Guinea</option>
+          <option value="GNB">Guinea-Bissau</option>
+          <option value="GUY">Guyana</option>
+          <option value="HTI">Haiti</option>
+          <option value="HOL">Holland</option>
+          <option value="HMD">Heard And Mc Donald Islands</option>
+          <option value="HND">Honduras</option>
+          <option value="HKG">Hong Kong</option>
+          <option value="HUN">Hungary</option>
+          <option value="ISL">Iceland</option>
+          <option value="IND">India</option>
+          <option value="IDN">Indonesia</option>
+          <option value="IRN">Iran (Islamic Republic Of)</option>
+          <option value="IRQ">Iraq</option>
+          <option value="IRL">Ireland</option>
+          <option value="ISR">Israel</option>
+          <option value="ITA">Italy</option>
+          <option value="JAM">Jamaica</option>
+          <option value="JPN">Japan</option>
+          <option value="JOR">Jordan</option>
+          <option value="KAZ">Kazakhstan</option>
+          <option value="KEN">Kenya</option>
+          <option value="KIR">Kiribati</option>
+          <option value="PRK">Korea</option>
+          <option value="KOR">Korea</option>
+          <option value="KWT">Kuwait</option>
+          <option value="KGZ">Kyrgyzstan</option>
+          <option value="LAO">Lao People's Democratic Republic</option>
+          <option value="LVA">Latvia</option>
+          <option value="LBN">Lebanon</option>
+          <option value="LSO">Lesotho</option>
+          <option value="LBR">Liberia</option>
+          <option value="LBY">Libyan Arab Jamahiriya</option>
+          <option value="LIE">Liechtenstein</option>
+          <option value="LTU">Lithuania</option>
+          <option value="LUX">Luxembourg</option>
+          <option value="MAC">Macau</option>
+          <option value="MKD">Macedonia</option>
+          <option value="MDG">Madagascar</option>
+          <option value="MWI">Malawi</option>
+          <option value="MYS">Malaysia</option>
+          <option value="MDV">Maldives</option>
+          <option value="MLI">Mali</option>
+          <option value="MLT">Malta</option>
+          <option value="MHL">Marshall Islands</option>
+          <option value="MTQ">Martinique</option>
+          <option value="MRT">Mauritania</option>
+          <option value="MUS">Mauritius</option>
+          <option value="MYT">Mayotte</option>
+          <option value="MEX">Mexico</option>
+          <option value="FSM">Micronesia</option>
+          <option value="MDA">Moldova</option>
+          <option value="MCO">Monaco</option>
+          <option value="MNG">Mongolia</option>
+          <option value="MSR">Montserrat</option>
+          <option value="MAR">Morocco</option>
+          <option value="MOZ">Mozambique</option>
+          <option value="MMR">Myanmar</option>
+          <option value="NAM">Namibia</option>
+          <option value="NRU">Nauru</option>
+          <option value="NPL">Nepal</option>
+          <option value="NLD">Netherlands</option>
+          <option value="ANT">Netherlands Antilles</option>
+          <option value="NCL">New Caledonia</option>
+          <option value="NZL">New Zealand</option>
+          <option value="NIC">Nicaragua</option>
+          <option value="NER">Niger</option>
+          <option value="NGA">Nigeria</option>
+          <option value="NIU">Niue</option>
+          <option value="NFK">Norfolk Island</option>
+          <option value="MNP">Northern Mariana Islands</option>
+          <option value="NOR">Norway</option>
+          <option value="OMN">Oman</option>
+          <option value="PAK">Pakistan</option>
+          <option value="PLW">Palau</option>
+          <option value="PAN">Panama</option>
+          <option value="PNG">Papua New Guinea</option>
+          <option value="PRY">Paraguay</option>
+          <option value="PER">Peru</option>
+          <option value="PHL">Philippines</option>
+          <option value="PCN">Pitcairn</option>
+          <option value="POL">Poland</option>
+          <option value="PRT">Portugal</option>
+          <option value="PRI">Puerto Rico</option>
+          <option value="QAT">Qatar</option>
+          <option value="REU">Reunion</option>
+          <option value="ROM">Romania</option>
+          <option value="RUS">Russian Federation</option>
+          <option value="RWA">Rwanda</option>
+          <option value="KNA">Saint Kitts And Nevis</option>
+          <option value="LCA">Saint Lucia</option>
+          <option value="VCT">Saint Vincent And The Grenadines</option>
+          <option value="WSM">Samoa</option>
+          <option value="SMR">San Marino</option>
+          <option value="STP">Sao Tome And Principe</option>
+          <option value="SAU">Saudi Arabia</option>
+          <option value="SEN">Senegal</option>
+          <option value="SYC">Seychelles</option>
+          <option value="SLE">Sierra Leonev</option>
+          <option value="SGP">Singapore</option>
+          <option value="SVK">Slovakia (Slovak Republic)</option>
+          <option value="SVN">Slovenia</option>
+          <option value="SLB">Solomon Islands</option>
+          <option value="SOM">Somalia</option>
+          <option value="ZAF">South Africa</option>
+          <option value="SGS">South Georgia And The S. Sandwich Is.</option>
+          <option value="ESP">Spain</option>
+          <option value="LKA">Sri Lanka</option>
+          <option value="SHN">St. Helena</option>
+          <option value="SPM">St. Pierre And Miquelon</option>
+          <option value="SDN">Sudan</option>
+          <option value="SUR">Suriname</option>
+          <option value="SJM">Svalbard And Jan Mayen Islands</option>
+          <option value="SWZ">Swaziland</option>
+          <option value="SWE">Sweden</option>
+          <option value="CHE">Switzerland</option>
+          <option value="SYR">Syrian Arab Republic</option>
+          <option value="TWN">Taiwan</option>
+          <option value="TJK">Tajikistan</option>
+          <option value="TZA">Tanzania</option>
+          <option value="THA">Thailand</option>
+          <option value="TGO">Togo</option>
+          <option value="TKL">Tokelau</option>
+          <option value="TON">Tonga</option>
+          <option value="TOR">Tortola</option>
+          <option value="TTO">Trinidad And Tobago</option>
+          <option value="TUN">Tunisia</option>
+          <option value="TUR">Turkey</option>
+          <option value="TKM">Turkmenistan</option>
+          <option value="TCA">Turks And Caicos Islands</option>
+          <option value="TUV">Tuvalu</option>
+          <option value="UGA">Uganda</option>
+          <option value="UKR">Ukraine</option>
+          <option value="ARE">United Arab Emirates</option>
+          <option value="GBR">United Kingdom</option>
+          <option value="UMI">United States Minor Outlying Islands</option>
+          <option value="URY">Uruguay</option>
+          <option value="UZB">Uzbekistan</option>
+          <option value="VUT">Vanuatu</option>
+          <option value="VAT">Vatican City State (Holy See)</option>
+          <option value="VEN">Venezuela</option>
+          <option value="VNM">Viet Nam</option>
+          <option value="VGB">Virgin Islands (British)</option>
+          <option value="VIR">Virgin Islands (U.S.)</option>
+          <option value="WLF">Wallis And Futuna Islands</option>
+          <option value="ESH">Western Sahara</option>
+          <option value="WIN">West Indies</option>
+          <option value="YEM">Yemen</option>
+          <option value="YUG">Yugoslavia</option>
+          <option value="ZAR">Zaire</option>
+          <option value="ZMB">Zambia</option>
+          <option value="ZWE">Zimbabwe</option>
+        </select>
+      </div>
+      <span *ngIf="formErrors.country" class="help-block">{{ formErrors.country }}</span>
+    </div>
+    <div id="addressWrapper" class="reasconCodeCheck row group general complaint form-group">
+      <label id="addressLabel" class="contactusField label" for="address">Address:</label>
+      <input id="address" type="text" class="contactusField fieldInput" name="address" formControlName="address" />
+      <span *ngIf="formErrors.address" class="help-block">{{ formErrors.address }}</span>
+    </div>
+    <div id="cityWrapper" class="reasconCodeCheck row group general complaint form-group">
+      <label id="cityLabel" class="contactusField label" for="city">City:</label>
+      <input id="city" type="text" class="contactusField fieldInput" name="city" formControlName="city"/>
+      <span *ngIf="formErrors.city" class="help-block">{{ formErrors.city }}</span>
+    </div>
+    <div id="stateWrapper" class="reasconCodeCheck row group checkCountry USA general complaint form-group">
+      <label id="stateLabel" class="contactusField label" for="state">State:</label>
+      <div id="stateDropDownWrapper" class="contactusField fieldInput dropdownWrapper">
+        <select id="state" class="contactusField fieldInput fieldSelect nice-select" name="state" formControlName="state">
+          <option value="">Choose a State</option>
+          <option value="AL">Alabama</option>
+          <option value="AK">Alaska</option>
+          <option value="AZ">Arizona</option>
+          <option value="AR">Arkansas</option>
+          <option value="CA">California</option>
+          <option value="CO">Colorado</option>
+          <option value="CT">Connecticut</option>
+          <option value="DC">D.C.</option>
+          <option value="DE">Delaware</option>
+          <option value="FL">Florida</option>
+          <option value="GA">Georgia</option>
+          <option value="HI">Hawaii</option>
+          <option value="ID">Idaho</option>
+          <option value="IL">Illinois</option>
+          <option value="IN">Indiana</option>
+          <option value="IA">Iowa</option>
+          <option value="kS">Kansas</option>
+          <option value="KY">Kentucky</option>
+          <option value="LA">Louisiana</option>
+          <option value="ME">Maine</option>
+          <option value="MD">Maryland</option>
+          <option value="MA">Massachusetts</option>
+          <option value="MI">Michigan</option>
+          <option value="MN">Minnesota</option>
+          <option value="MS">Mississippi</option>
+          <option value="MO">Missouri</option>
+          <option value="MT">Montana</option>
+          <option value="NE">Nebraska</option>
+          <option value="NV">Nevada</option>
+          <option value="NH">New Hampshire</option>
+          <option value="NJ">New Jersey</option>
+          <option value="NM">New Mexico</option>
+          <option value="NY">New York</option>
+          <option value="NC">North Carolina</option>
+          <option value="ND">North Dakota</option>
+          <option value="OH">Ohio</option>
+          <option value="OK">Oklahoma</option>
+          <option value="OR">Oregon</option>
+          <option value="PA">Pennsylvania</option>
+          <option value="Ri">Rhode Island</option>
+          <option value="SC">South Carolina</option>
+          <option value="SD">South Dakota</option>
+          <option value="TN">Tennessee</option>
+          <option value="TX">Texas</option>
+          <option value="UT">Utah</option>
+          <option value="VT">Vermont</option>
+          <option value="VA">Virginia</option>
+          <option value="WA">Washington</option>
+          <option value="WV">West Virginia</option>
+          <option value="WI">Wisconsin</option>
+          <option value="WY">Wyoming</option>
+        </select>
+      </div>
+      <span *ngIf="formErrors.state" class="help-block">{{ formErrors.state }}</span>
+    </div>
+    <div id="provinceWrapper" class="reasconCodeCheck row group checkCountry CAN form-group">
+      <label id="provinceLabel" class="contactusField label" for="state">Province:</label>
+      <div id="provinceDropDownWrapper" class="contactusField fieldInput dropdownWrapper">
+        <select id="province" class="contactusField fieldInput fieldSelect nice-select" name="state" formControlName="state">
+          <option value="">Choose a Province</option>
+          <option value="AB">Alberta</option>
+          <option value="BC">British Columbia</option>
+          <option value="MB">Manitoba</option>
+          <option value="NB">New Brunswick</option>
+          <option value="NL">NewFoundland and Labrador</option>
+          <option value="NT">Northwest Territories</option>
+          <option value="NS">Nova Scotia</option>
+          <option value="NU">Nunavut</option>
+          <option value="OT">Ontario</option>
+          <option value="PE">Prince Edward Island</option>
+          <option value="QC">Quebec</option>
+          <option value="SK">Saskatchewan</option>
+          <option value="YT">Yukon</option>
+        </select>
+      </div>
+      <span *ngIf="formErrors.state" class="help-block">{{ formErrors.state }}</span>
+    </div>
+    <div id="zipWrapper" class="reasconCodeCheck row group general complaint form-group">
+      <label id="zipLabel" class="contactusField label" for="zip">Zip/Postal Code:<span class="required">*</span></label>
+      <input id="zip" class="contactusField fieldInput" name="zip" formControlName="zip" type="number"/>
+      <span *ngIf="formErrors.zip" class="help-block">{{ formErrors.zip }}</span>
+    </div>
+    <div id="phoneNoWrapper" class="reasconCodeCheck row group general complaint casefollowup form-group" >
+      <label id="phoneLabel" class="contactusField label" for="phone">
+        Phone Number:<span class="required reasconCodeCheck casefollowup complaint">*</span></label>
+      <input id="phone" class="contactusField fieldInput" name="phone" type="number" formControlName="phone"/>
+      <div id="phoneTypeDropDownWrapper" class="contactusField fieldInput dropdownWrapper">
+        <select id="phoneType" name="phone_type" formControlName="phone_type" class="fieldInput fieldSelect nice-select" >
+          <option value="">Select One</option>
+          <option value="Cell">Cell</option>
+          <option value="Home">Home</option>
+          <option value="Work">Work</option>
+        </select>
+      </div>
+      <span *ngIf="formErrors.phone" class="help-block">{{ formErrors.phone }}</span>
+      <span *ngIf="formErrors.phone_type" class="help-block">{{ formErrors.phone_type }}</span>
+    </div>
+    <div id="prefContactMethod" class="reasconCodeCheck row group general complaint casefollowup form-group">
+      <div id="prefContactMethodLabelWrapper">
+        <label id="contactMethodLabel" class="contactusField label" for="phone_method">
+          Preferred Contact Method:
+        </label>
+      </div>
+      <div id="prefContactMethodWrapper">
+        <input id="prefContactEmail" class="contactusField radioField" type="radio"
+               name="phone_method" formControlName="phone_method" value="Email" />
+        <label class="radioInlineLabel contactusField label" for="prefContactEmail">Email</label>
+        <input id="prefContactphone" class="contactusField radioField" type="radio"
+               name="phone_method" formControlName="phone_method" value="Phone Number" />
+        <label class="radioInlineLabel contactusField label" for="prefContactphone">Phone</label>
+        <input id="prefContactMail" class="contactusField radioField" type="radio"
+               name="phone_method" formControlName="phone_method" value="Mail" />
+        <label class="radioInlineLabel contactusField label" for="prefContactMail">Mail</label>
+      </div>
+      <span *ngIf="formErrors.phone_method" class="help-block">{{ formErrors.phone_method }}</span>
+    </div>
+    <div id="productHeaderWrapper" class="reasconCodeCheck row group general complaint form-group">
+      <strong>Product Questions</strong>
+      <p>Please answer the following questions to help us serve you better:</p>
+    </div>
+    <div id="upcWrapper" class="row group reasconCodeCheck general complaint form-group">
+      <label id="upcLabel" class="contactusField label" for="upc">Please enter the 10 digit UPC number:</label>
+      <input id="upc"  class="contactusField fieldInput" type="text" name="upc"
+             formControlName="upc" maxlength="10" value="">
+      <span *ngIf="formErrors.upc" class="help-block">{{ formErrors.upc }}</span>
+      <a href="javascript:void(0)" (click)="showUPC()" id="showUPCExample">See Detail</a>
+      <div id="upcDetailWrapper" *ngIf="showUPCDetail">
+        <img src="//p.fbwineapps.com/BrandSDK-v1.1/images/contactus/barcode.gif" align="Sku #" id="sku" width="168">
+        <div id="upcMessageWrapper" class="boxOut" >
+          <p>The UPC number is located on the label, under the bar code.
+            The example shows the 10 digit UPC number enclosed in the red box.</p>
+        </div>
+      </div>
+    </div>
+    <div id="bottleProductCodeWrapper" class="row group reasconCodeCheck complaint form-group">
+      <label id="bottleProductCodeLabel" class="contactusField label" for="bottleProductCode">
+        Please enter the Bottling Date Code:
+      </label>
+      <input  id="bottleProductCode" class="contactusField fieldInput" type="text"
+              formControlName="product_code" name="product_code" value="">
+      <span *ngIf="formErrors.product_code" class="help-block">{{ formErrors.product_code }}</span>
+      <div>
+        <a href="//p.fbwineapps.com/BrandSDK-v1.1/images/contactus/bottleProductCodeExample.png"
+           id="bottleProductCodeExample" target="_blank">See Example</a>
+      </div>
+    </div>
+    <div id="purchaseDateWrapper" class="reasconCodeCheck row group general complaint form-group">
+      <label id="purchaseDateLabel" class="contactusField label" for="purchaseDate">
+        Do you recall when you purchased this product?
+      </label>
+      <input id="purchaseDate" class="contactusField fieldInput" name="purchase_date"
+             formControlName="purchase_date" type="date" placeholder="MM-DD-YYYY"/>
+      <span *ngIf="formErrors.purchase_date" class="help-block">{{ formErrors.purchase_date }}</span>
+    </div>
+    <div id="purchasePlace" class="reasconCodeCheck row group general complaint form-group">
+      <label id="purchasePlaceLabel" class="contactusField label" for="purchasePlace">Where did you buy it?:</label>
+      <div id="purchasePlaceDropDownWrapper" class="contactusField fieldInput dropdownWrapper">
+        <select id="purchasePlace" class="contactusField fieldInput fieldSelect nice-select"
+                formControlName="where_buy" name="where_buy" alt="Please select an option">
+          <option value="">Select One</option>
+          <option value="CONVENIENCE">Convenience Store</option>
+          <option value="DRUG">Drug Store</option>
+          <option value="GROCERY">Grocery Store</option>
+          <option value="LIQUOR">Liquor Store</option>
+          <option value="CLUB">Club Membership</option>
+          <option value="WAREHOUSE">Warehouse or Superstore</option>
+          <option value="Bx">Military Base Exchange Store</option>
+          <option value="ONLINE">Online</option>
+          <option value="GIFT">Received as a Gift</option>
+          <option value="RTHF">Restaurant-Tavern-Hotel-Flight</option>
+          <option value="STATE">State Liquor Store</option>
+          <option value="TASTINGRM">Tasting Room</option>
+          <option value="WINECLUB">Wine Club</option>
+          <option value="DISCOUNTERS">Discount Store</option>
+          <option value="Other">Duty Free or Ferry</option>
+          <option value="UNKNOWN">Don't Remember or Other</option>
+        </select>
+      </div>
+      <span *ngIf="formErrors.where_buy" class="help-block">{{ formErrors.where_buy }}</span>
+    </div>
+    <div id="purchaseReasonWrapper" class="reasconCodeCheck row group general complaint form-group">
+      <label id="purchaseReasonLabel" class="contactusField label" for="purchaseReason">
+        Why did you buy this product?
+      </label>
+      <div id="purchaseReasonDropDownWrapper" class="contactusField fieldInput dropdownWrapper">
+        <select id="purchaseReason" class="contactusField fieldInput fieldSelect nice-select"
+                name="why_buy" formControlName="why_buy" alt="Please select an option">
+          <option value="">Select One</option>
+          <option value="Appealing">Appealing Description</option>
+          <option value="Awards">Competitive Awards</option>
+          <option value="BuyList">Magazine Best Buy List</option>
+          <option value="Catchy Name">Catchy Name</option>
+          <option value="CAUSE">Brand Support for Cause</option>
+          <option value="RECOCIC">CSR recommended</option>
+          <option value="Collector">Consumer collects wine</option>
+          <option value="Country of Origin">Country of Origin</option>
+          <option value="EVENT-TR">Tried at event or Tasting Room</option>
+          <option value="RECOFrFam">Recommended by a friend or family</option>
+          <option value="GIFT">It was a gift</option>
+          <option value="Goodvalue">It was a good value for the money</option>
+          <option value="It was Gallo">Tried it because it is Gallo</option>
+          <option value="LabelDes">Label description sounded good</option>
+          <option value="Location">State or Appellation influenced me</option>
+          <option value="AdvMag">Saw a magazine ad</option>
+          <option value="MIR-CPN">I had a Coupon</option>
+          <option value="On Display">It was on a display</option>
+          <option value="ONSALE">It was on sale</option>
+          <option value="Points">High Points from Wine Critics</option>
+          <option value="COOKCLASS">Referred to in my cooking class</option>
+          <option value="RegBuy">I regularly buy this Wine</option>
+          <option value="RECODr">Doctor recommended it</option>
+          <option value="RECORest">Restaurant recommended</option>
+          <option value="Saw on TV">Saw on TV</option>
+          <option value="SOCNETWORK">Social Network Posts</option>
+          <option value="Storedemo">Tasted at Store Demo</option>
+          <option value="RECOStore">Store person recommended it</option>
+          <option value="Tried Socially">Tried Socially</option>
+          <option value="VarietalPref">Preferred This Varietal</option>
+          <option value="AdvWeb">Saw it in a web advertisement</option>
+        </select>
+      </div>
+      <span *ngIf="formErrors.why_buy" class="help-block">{{ formErrors.why_buy }}</span>
+    </div>
+    <div id="occasionWrapper" class="reasconCodeCheck row group general complaint form-group">
+      <label id="occasionLabel" class="contactusField label" for="occasion">Occasion of use?</label>
+      <div id="occasionDropDownWrapper" class="contactusField fieldInput dropdownWrapper">
+        <select id="occasion" class="contactusField fieldInput fieldSelect nice-select"
+                name="occasion" formControlName="occasion" alt="Please select an option">
+          <option value="">Select One</option>
+          <option value="ETM-HA">After Dinner at Home</option>
+          <option value="NIY-FH">At Friends Homes</option>
+          <option value="DFT-HD">At Home Meal with Partner</option>
+          <option value="GRT-HSO">At Home Special Occasion</option>
+          <option value="ETM-HS">At Home with Others</option>
+          <option value="WT">At Wine Tasting</option>
+          <option value="GRT-RD">Dinner at Restaurant</option>
+          <option value="NIY-HH">Happy Hour Out</option>
+          <option value="NIY-BA">Lounge/Tavern</option>
+          <option value="GRT-RL">Lunch at a Restaurant</option>
+          <option value="UNW-HA">My Personal Time</option>
+          <option value="GTGV-OUT">Outdoor Camping-Hiking</option>
+          <option value="GTGV-OSO">Outdoor Special Occasion</option>
+          <option value="GRT-RSO">Restaurant Special Occasion</option>
+          <option value="GRT-RB">Business Lunch</option>
+          <option value="NC">Did not Consume</option>
+        </select>
+      </div>
+      <span *ngIf="formErrors.occasion" class="help-block">{{ formErrors.occasion }}</span>
+    </div>
+    <div id="servingMethodWrapper" class="reasconCodeCheck row group general complaint form-group">
+      <label id="servingMethodLabel" class="contactusField label" for="servingMethod">How was the product served?</label>
+      <div id="servingMethodDropDownWrapper" class="contactusField fieldInput dropdownWrapper">
+        <select id="servingMethod" class="contactusField fieldInput fieldSelect nice-select"
+                name="how_served" formControlName="how_served" alt="Please select an option">
+          <option value="">Select One</option>
+          <option value="COLA">Added Cola</option>
+          <option value="JUICE">Added Juice</option>
+          <option value="MIXEDWITH">Added Other Alcohol Bevs</option>
+          <option value="COFFEE">Added to Coffee</option>
+          <option value="ICE B">Bottle Pulled from Ice Bucket</option>
+          <option value="ICE C">Bottle Pulled from Ice Chest</option>
+          <option value="COOK">Cooked With &nbsp;It</option>
+          <option value="SODA TONIC">Added Club Soda or Tonic</option>
+          <option value="DIDNOTSRV">Did Not Serve Yet</option>
+          <option value="FROZEN">It was Served Frozen</option>
+          <option value="OVER ICE CREAM">Poured Over Ice Cream</option>
+          <option value="UPNEAT">Spirits Served Neat</option>
+          <option value="WARM">Warmed</option>
+          <option value="ROOM">Wine at Room Temperature</option>
+          <option value="OVERICE">Wine Poured Over Ice</option>
+          <option value="REFER">Wine Refrigerated</option>
+          <option value="ENERGY DRINK">With Energy Drink</option>
+          <option value="VODKA">With Vodka</option>
+          <option value="OUTDOORS">Outdoors Open to Air/Elements</option>
+        </select>
+      </div>
+    </div>
+    <div id="futurePurchaseWrapper" class="reasconCodeCheck row group general complaint form-group">
+      <label id="futurePurchaseLabel" class="contactusField label" for="futurePurchase">
+        Do you plan to buy this product again?
+      </label>
+      <div id="futurePurchaseDropDownWrapper" class="contactusField fieldInput dropdownWrapper">
+        <select id="futurePurchase" class="contactusField fieldInput fieldSelect nice-select"
+                name="buy_again" formControlName="buy_again" alt="Please select an option">
+          <option value="">Select One</option>
+          <option value="Y">Definitely will buy in future</option>
+          <option value="W">Probably will buy in future</option>
+          <option value="U">Undecided</option>
+          <option value="P">Probably will not buy in future</option>
+          <option value="N">Definitely will not buy in future</option>
+        </select>
+      </div>
+      <span *ngIf="formErrors.buy_again" class="help-block">{{ formErrors.buy_again }}</span>
+    </div>
+    <div id="issueOccurrenceWrapper" class="reasconCodeCheck row group complaint form-group">
+      <label id="issueOccurrenceLabel" class="contactusField label" for="issueOccurrence">
+        When did you first notice this issue?
+      </label>
+      <div id="issueOccurrenceDropDownWrapper" class="contactusField fieldInput dropdownWrapper">
+        <select id="issueOccurrence" class="contactusField fieldInput fieldSelect nice-select"
+                formControlName="when_notice" name="when_notice" alt="Please select an option">
+          <option value="">Select One</option>
+          <option value="Tapopen">Noticed When Foil, Capsule, Label Removed</option>
+          <option value="Screwcapopen">Noticed When Screw Cap Removed</option>
+          <option value="Corkopen">Notice During Corkscrew Opening Process</option>
+          <option value="First">First Glass</option>
+          <option value="Second">Second Glass</option>
+          <option value="Midbottle">Midbottle</option>
+          <option value="Last">Last Glass</option>
+          <option value="Empty">When Bottle Empty</option>
+          <option value="Firstsip">First Sip from Bottle</option>
+          <option value="Sniu">Product was Unopened, Stored</option>
+          <option value="Osniu">Bottle Opened, Stored but Not in Use</option>
+          <option value="Shelf">Product on Store Shelf</option>
+        </select>
+      </div>
+      <span *ngIf="formErrors.when_notice" class="help-block">{{ formErrors.when_notice }}</span>
+    </div>
+    <div id="storageLocationWrapper" class="reasconCodeCheck row group complaint form-group">
+      <label id="storageLocationLabel" class="contactusField label" for="storageLocation">
+        Where was the product stored prior to this experience?
+      </label>
+      <div id="storageLocationDropDownWrapper" class="contactusField fieldInput dropdownWrapper">
+        <select id="storageLocation" class="contactusField fieldInput fieldSelect nice-select"
+                formControlName="where_stored" name="where_stored"  alt="Please select an option">
+          <option value="">Select One</option>
+          <option value="Car">Car</option>
+          <option value="Closet">Closet</option>
+          <option value="Countertop">Countertop</option>
+          <option value="Cupboard">Cupboard-Pantry</option>
+          <option value="Garage">Garage</option>
+          <option value="Refrigerator">Refrigerator</option>
+          <option value="Cellar">Wine Cellar</option>
+          <option value="Rack">Wine Rack</option>
+          <option value="Chiller">Wine Chiller</option>
+          <option value="Sdns">Not Stored-Used Same Day as Purchased</option>
+        </select>
+      </div>
+      <span *ngIf="formErrors.where_stored" class="help-block">{{ formErrors.where_stored }}</span>
+    </div>
+    <div id="openingMethodWrapper" class="reasconCodeCheck row group complaint form-group">
+      <label id="openingMethodLabel" class="contactusField label" for="openingMethod">
+        What type of cork puller or bottle opener was used?
+      </label>
+      <div id="openingMethodDropDownWrapper" class="contactusField fieldInput dropdownWrapper">
+        <select id="openingMethod" class="contactusField fieldInput fieldSelect nice-select"
+                name="what_opener" formControlName="what_opener" alt="Please select an option">
+          <option value="">Select One</option>
+          <option value="T">T-Style</option>
+          <option value="Waiter">Waiter Key</option>
+          <option value="Wing">Wing Lever</option>
+          <option value="Boot">Boot Lever</option>
+          <option value="Rabbit">Rabbit Device</option>
+          <option value="Brucart">Brucart</option>
+          <option value="Sieger 600">Spring Loaded</option>
+          <option value="Two Prong">1 Long/1 Short Prong</option>
+          <option value="Speed">Speed Puller</option>
+          <option value="Double Helix">Automatic Corkscrew</option>
+          <option value="Co2">Gas Cork Pops</option>
+          <option value="Ohso">Ohso Style</option>
+          <option value="Ncs">No Corkscrew Used</option>
+          <option value="Other Opener">Other</option>
+        </select>
+      </div>
+      <span *ngIf="formErrors.what_opener" class="help-block">{{ formErrors.what_opener }}</span>
+    </div>
+    <div id="commentsHeaderWrapper" class="reasconCodeCheck row group general complaint casefollowup form-group">
+      <strong>Comments</strong>
+    </div>
+    <div id="userCommentWrapper" class="reasconCodeCheck row general complaint casefollowup form-group">
+      <label id="userCommentLabel" class="contactusField label" for="comments">
+        Please share your comments below:<span class="required">*</span>
+      </label>
+      <textarea id="userComment" class="contactusField fieldInput fieldTextArea"
+                formControlName="comments" name="comments" maxlength="250"></textarea>
+      <span *ngIf="formErrors.comments" class="help-block">{{ formErrors.comments }}</span>
+    </div>
+    <div id="moreInfoIntlWrapper" class="reasconCodeCheck row group checkCountry CAN INT yes-check form-group">
+      <input id="moreInfoIntl" class="contactusField fieldInput fieldCheckBox" type="checkbox"
+             name="yes_communication" formControlName="yes_communication" value="Y" />
+      <label id="moreInfoIntlLabel" class="contactusField label" for="moreInfoIntl">
+        Yes, I would like to receive occasional communications about promotions, offers and
+        other information from {{brandName}}. Further, I consent to the transmission to and
+        storage of the data I provide on this web site in the United States or United
+        Kingdom and the treatment of such information in accordance with the {{brandName}}
+        <a [routerLink]="['/privacy-policy']" rel="external"
+           title="Find out how we use your information.">privacy policy</a>.
+      </label>
+      <span *ngIf="formErrors.yes_communication" class="help-block">{{ formErrors.yes_communication }}</span>
+    </div>
+    <div id="userOpinionWrapper" class="reasconCodeCheck row group checkCountry USA general
+  complaint yes-check form-group">
+      <input id="userOpinion" class="contactusField fieldInput fieldCheckBox"
+             type="checkbox" name="yes_opinion" formControlName="yes_opinion" value="Y"/>
+      <label id="userOpinionLabel" class="contactusField label" for="userOpinion">
+        Yes, I am willing to share my opinion regarding product or package changes, should there be any in the future.
+      </label>
+      <span *ngIf="formErrors.yes_opinion" class="help-block">{{ formErrors.yes_opinion }}</span>
+    </div>
+    <div id="moreInfoWrapper" class="reasconCodeCheck row group checkCountry USA general complaint yes-check form-group">
+      <input id="moreInfo" class="contactusField fieldInput fieldCheckBox" type="checkbox"
+             name="yes_communication" formControlName="yes_communication" value="Y"/>
+      <label id="moreInfoLabel" class="contactusField label" for="moreInfo">
+        Yes, I would like to receive communications and other information from {{brandName}}.
+      </label>
+      <span *ngIf="formErrors.yes_communication" class="help-block">{{ formErrors.yes_communication }}</span>
+    </div>
+    <div id="userContactWrapper" class="reasconCodeCheck row group general complaint no-check form-group">
+      <input id="userContact" class="contactusField fieldInput fieldCheckBox" type="checkbox"
+             name="no_contact" formControlName="no_contact" value="Y">
+      <label id="userContactLabel" class="contactusField label" for="userContact">
+        No.  Please do not contact me in the future.
+      </label>
+      <span *ngIf="formErrors.no_contact" class="help-block">{{ formErrors.no_contact }}</span>
+    </div>
+    <div id="submitBtnWrapper" class="reasconCodeCheck general complaint casefollowup form-group">
+      <button class="btn btn-yellow">Submit</button>
+    </div>
+    <div id="formRequirementsWrapper" class="reasconCodeCheck general complaint casefollowup form-group">
+      <div class="message">
+        <span *ngIf="contactMessage" class="help-block">{{ contactMessage }}</span>
+      </div>
+      <p><span class="required">*</span> Required Fields &nbsp;</p>
+      <p><span class="required">**</span>
+        Confirm that you are of legal drinking age in the country where this site is accessed.
+      </p>
+    </div>
+  </form>

@@ -1,0 +1,10 @@
+<main>
+    <app-life-is-better *ngIf="lifeIsBetterContent" [content]="lifeIsBetterContent"></app-life-is-better>
+  <app-wine-section></app-wine-section>
+  <app-meet-section></app-meet-section>
+  <app-story-section class="barefoot-social"
+                     listClass="stripe--03"
+                     *ngIf="socialSectionContent"
+                     [content]="socialSectionContent"></app-story-section>
+
+</main>

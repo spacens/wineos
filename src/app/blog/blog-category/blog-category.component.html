@@ -1,0 +1,14 @@
+<main>
+  <app-archive-header title="Blog<br>Archive" [links]="categoryLinks"></app-archive-header>
+
+  <div class="container container-md">
+    <div class="archive-blog-list">
+      <div class="list-wrap">
+        <app-archive-item *ngFor="let post of archiveItems" [item]="post"></app-archive-item>
+      </div>
+      <div class="btn-center">
+        <a href="#" class="btn btn-outline-pink">All Posts</a>
+      </div>
+    </div>
+  </div>
+</main>

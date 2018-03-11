@@ -1,0 +1,288 @@
+// ---------------------------------------------------------===
+// Campaign styles
+// ---------------------------------------------------------===
+
+.cheers {
+    padding: 60px 0 81px;
+
+    @include media('<tablet') {
+        padding: 22px 0 57px;
+    }
+
+    h1 {
+        @extend %h1;
+        margin-bottom: 0;
+    }
+
+    .top {
+        align-items: center;
+        margin-bottom: 13px;
+
+        h1 {
+            @include media('<desktop') {
+                transform: none;
+                text-align: center;
+                margin-bottom: 27px;
+            }
+
+            @include media('<tablet') {
+                font-size: 35px;
+                margin-bottom: 19px;
+            }
+        }
+    }
+
+    .form-search {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        margin-top: 5px;
+
+        @include media('<desktop') {
+            margin: 0 0 20px;
+        }
+
+        @include media('<tablet') {
+            display: block;
+            margin-bottom: 24px;
+        }
+
+        .input-ico {
+            position: relative;
+            flex: 1;
+
+            &:before {
+                @include box-align(vc);
+                content: '\e90d';
+                font: 15px/1 $icomoon;
+                left: 0;
+
+                @include media('<tablet') {
+                    top: 42%;
+                }
+            }
+
+            input {
+                border-bottom-color: $lipstick;
+                color: $martinique;
+                @include placeholder {
+                    color: $martinique;
+                }
+            }
+        }
+
+        .or {
+            align-self: center;
+            padding: 0 15px;
+
+            @include media('<tablet') {
+                padding: 11px 15px;
+                text-align: center;
+            }
+        }
+
+        .btn {
+            width: 308px;
+
+            @include media('<tablet') {
+                width: 100%;
+            }
+        }
+    }
+
+    .featured-video {
+        align-items: center;
+        margin-bottom: 61px;
+
+        @include media('<tablet') {
+            margin-bottom: 30px;
+        }
+
+        .img {
+            display: block;
+            position: relative;
+
+            @include media('<tablet') {
+                margin: 0 -51px;
+            }
+        }
+
+        h1 {
+            color: $lipstick;
+            margin: 66px 0 7px -55px;
+
+            @include media('<tablet') {
+                margin: 25px 16% 9px;
+            }
+
+            @include media('<xs-phone') {
+                margin: 25px 9% 9px;
+            }
+        }
+
+        .btn {
+            @include media('<tablet') {
+                display: block;
+            }
+        }
+    }
+
+    .btn-center {
+        padding-top: 32px;
+
+        @include media('<tablet') {
+            padding-top: 8px;
+        }
+
+        .btn {
+            width: 420px;
+
+            @include media('<phone') {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.cheers--orange {
+    @include stripebg($yellow-sea, orange-c, 24px, 24px);
+
+    .container {
+        &:before {
+            background-image: url('#{$image-path}/bg11.png');
+        }
+    }
+}
+
+.cheers--pink {
+    @include stripebg($lipstick, pink, 24px, 24px);
+
+    .container {
+        &:before {
+            background-image: url('#{$image-path}/bg12.png');
+        }
+    }
+
+    .desc {
+        @include media('>=tablet') {
+            float: right;
+        }
+    }
+
+    .img {
+        @include media('>=tablet') {
+            right: auto;
+            left: 0;
+        }
+    }
+
+    .more {
+        &:before {
+            color: $mustard;
+        }
+    }
+}
+
+[class*="cheers--"] {
+    color: $white;
+    padding: 148px 0 83px;
+
+    @include media('<tablet') {
+        padding: 98px 0 72px;
+    }
+
+    &:before {
+        top: -24px;
+    }
+
+    &:after {
+        bottom: -24px;
+    }
+
+    .container {
+        max-width: 790px;
+        position: relative;
+
+        &:before {
+            content: '';
+            position: absolute;
+            left: -200px;
+            right: -200px;
+            top: -46px;
+            height: 144px;
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+
+            @include media('<tablet') {
+                background-size: 48% 69px;
+            }
+        }
+    }
+
+    .desc {
+        @include media('>=tablet') {
+            width: 70%;
+        }
+    }
+
+    .inner {
+        @include media('>=tablet') {
+            padding-left: 111px;
+        }
+
+        @include media('<tablet') {
+            padding-right: 87px;
+            position: relative;
+        }
+    }
+
+    .img {
+        position: absolute;
+        bottom: -26px;
+        right: 0;
+        width: 240px;
+        text-align: center;
+
+        @include media('<tablet') {
+            width: 67px;
+            bottom: -21px;
+        }
+
+        img {
+            @include media('<tablet') {
+                max-height: 203px;
+                width: auto;
+            }
+        }
+    }
+
+    h1 {
+        @extend %h1;
+        max-width: 509px;
+        margin: 0 0 1px -7px;
+
+        @include media('<desktop') {
+            max-width: 347px;
+        }
+
+        @include media('<tablet') {
+            margin: 0 17px 20px;
+        }
+
+        @include media('<xs-phone') {
+            margin: 0 4px 20px;
+        }
+    }
+
+    p {
+        margin-bottom: 22px;
+
+        @include media('<tablet') {
+            margin-bottom: 30px;
+        }
+    }
+
+    .more {
+        color: $white;
+    }
+}

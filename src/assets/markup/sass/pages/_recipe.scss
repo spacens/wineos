@@ -1,0 +1,183 @@
+// ---------------------------------------------------------===
+// Where to Buy page styles
+// ---------------------------------------------------------===
+
+.content-recipe {
+    margin-bottom: 119px;
+
+    @include media('>=tablet') {
+        font-size: 19px;
+        line-height: 1.54;
+        margin-bottom: 102px;
+    }
+
+    &-wrap {
+        padding-bottom: 40px;
+
+        @include media('>=tablet') {
+            padding: 92px 0 71px;
+        }
+    }
+
+    .top {
+        flex-direction: row-reverse;
+        margin-bottom: 17px;
+
+        @include media('<tablet') {
+            margin-bottom: 48px;
+        }
+
+        .col-sm-6 {
+            &:first-child {
+                @include media('>=tablet') {
+                    float: right;
+                }
+            }
+        }
+
+        img {
+            @include media('<tablet') {
+                width: 100%;
+            }
+        }
+    }
+
+    .grid:not(.top) {
+        .col-sm-6 {
+            @include media('<tablet') {
+                margin-top: 46px;
+            }
+        }
+    }
+
+    h1 {
+        transform: rotate(-12deg);
+        margin: 41px 0 -26px -75px;
+        position: relative;
+
+        @include media('<desktop') {
+            margin-left: 0;
+        }
+
+        @include media('<tablet') {
+            margin-bottom: -31px;
+        }
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: -41px;
+            right: 0;
+            height: 132px;
+            transform: rotate(12deg);
+            z-index: -1;
+            background: url('#{$image-path}/bg08.png') no-repeat 50% 50%/auto 132px;
+
+            @include media('<desktop') {
+                background-size: auto 64%;
+                top: -12px;
+            }
+
+            @include media('<tablet') {
+                height: 94px;
+                right: -41px;
+                top: 0;
+                background-size: auto 83%;
+            }
+        }
+    }
+
+    h2 {
+        color: $lipstick;
+        margin-bottom: 18px;
+
+        @include media('<tablet') {
+            margin-bottom: 15px;
+        }
+    }
+
+    ul {
+        @extend %listreset;
+
+        li {
+            margin-bottom: 8px;
+
+            @include media('<tablet') {
+                margin-bottom: 6px;
+            }
+        }
+    }
+
+    ol {
+        @extend %listreset;
+        counter-reset: item;
+
+        > li {
+            padding-left: 26px;
+            margin-bottom: 16px;
+
+            @include media('<tablet') {
+                padding-left: 19px;
+                margin-bottom: 12px;
+            }
+
+            &:before {
+                counter-increment: item;
+                content: counter(item);
+                float: left;
+                margin-left: -26px;
+                font-family: $hwtartz;
+                color: $strikemaster;
+
+                @include media('<tablet') {
+                    margin-left: -18px;
+                }
+            }
+        }
+    }
+
+    .featuring {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 0 35px;
+        margin-bottom: 21px;
+
+        @include media('<tablet') {
+            padding: 0 8px;
+            margin-bottom: 13px;
+        }
+
+        .img {
+            margin-left: 18px;
+            width: 41px;
+
+            @include media('<tablet') {
+                width: 36px;
+            }
+        }
+
+        .txt {
+            text-transform: uppercase;
+            text-align: right;
+            flex: 1;
+            padding-top: 13px;
+
+            > * {
+                display: block;
+            }
+
+            span {
+                font-size: 10px;
+                font-weight: 500;
+                color: $strikemaster;
+                margin-bottom: 3px;
+            }
+
+            strong {
+                font: 400 18px/.84 $hwtartz;
+            }
+        }
+    }
+}

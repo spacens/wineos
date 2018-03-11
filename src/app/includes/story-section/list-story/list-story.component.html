@@ -1,0 +1,18 @@
+<section class="row">
+  <header class="heading">
+    <h2>{{content.title}}</h2>
+    <p class="p-md">{{content.description}}</p>
+  </header>
+  <ul class="list-story">
+    <li *ngFor="let item of content.items">
+      <div class="blog border-pink-1">
+        <a href="#" class="img-hold">
+          <img [src]="item.image" alt="">
+        </a>
+        <h3><a href="#">{{item.title}}</a></h3>
+        <p>{{item.description}}</p>
+        <!--<a href="#" class="btn btn-pink">About our LGB TQ Support</a>-->
+      </div>
+    </li>
+  </ul>
+</section>

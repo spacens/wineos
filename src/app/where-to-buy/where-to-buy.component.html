@@ -1,0 +1,57 @@
+<main>
+  <div class="stores">
+    <div class="container">
+      <div class="grid-flex">
+        <div class="col-md-8">
+          <div class="map">
+            <div class="placeholder">
+              <sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+                <sebm-google-map-marker *ngFor="let shop of shopList let i = index"
+                                        [latitude]="shop.latitude"
+                                        [longitude]="shop.longitude"
+                                        [label]="(i+1).toString()"
+                                        (markerClick)="selectShop(shop, false)">
+                          <sebm-google-map-info-window #infoWindow>
+                            <strong style="color:black;">{{shop.name}}<br>{{shop.address}}, {{shop.city}}, {{shop.state}} {{shop.zipCode}}</strong>
+                          </sebm-google-map-info-window>
+                </sebm-google-map-marker>
+              </sebm-google-map>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <form action="#" class="form-find">
+            <input type="text" [(ngModel)]="address"  #ctrl="ngModel" name="address" placeholder="Enter zip">
+            <input type="button" value="Find Barefoot Near You" class="btn btn-yellow" (click)="submit()">
+          </form>
+          <div class="row">
+            <span class="title">Filters</span>
+            <div class="btn-group">
+              <a  class="btn btn-outline-purple1" [ngClass]="{'active' : groupId == 28}" (click)="selectGroup(28)">In Stores</a>
+              <a  class="btn btn-outline-purple1" [ngClass]="{'active' : groupId == 72}" (click)="selectGroup(72)">Dining Out</a>
+            </div>
+
+            <div class="nice-select">
+              <span class="current">Select a wine...</span>
+              <ul class="list">
+                <li  *ngFor="let wine of wineItems" class="option" (click)="selectWine(wine)">{{wine.title}}</li>
+              </ul></div>
+
+
+          </div>
+          <div class="row" *ngIf="shopList">
+            <span class="title">Results</span>
+            <ul class="store-list">
+              <li *ngFor="let shop of shopList | slice:0:showItems" (click)="selectShop(shop, true)">
+                <strong>{{shop.name}}</strong>
+                <span>{{shop.address}}</span>
+                <span>{{shop.city}} {{shop.state}} {{shop.zipCode}}</span>
+              </li>
+            </ul>
+            <a  (click)="showMore()" class="btn btn-full btn-outline-pink">More results</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

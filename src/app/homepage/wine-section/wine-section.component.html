@@ -1,0 +1,51 @@
+<section class="section-wine">
+  <div class="container">
+    <div class="heading">
+      <h2>Our wine</h2>
+      <p class="p-md">Barefoot is in the business of making great wine that has something for everyone, from our sweet reds and refreshing whites to our delicious bubbly.</p>
+      <h3>Try a wine that…</h3>
+
+
+      <ul class="btn-list">
+        <li *ngFor="let tag of tagList">
+          <a class="btn btn-rounded btn-purple" routerLink="/our-wine">{{tag.title}}</a>
+        </li>
+      </ul>
+    </div>
+    <ul class="wine-list">
+      <li>
+        <a routerLink="/our-wine/red">
+          <img src="/assets/markup/images/img03.png" alt="">
+          <span class="caption">Red</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/our-wine/white">
+          <img src="/assets/markup/images/img04.png" alt="">
+          <span class="caption">White</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/our-wine/pink">
+          <img src="/assets/markup/images/img05.png" alt="">
+          <span class="caption">Pink</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/our-wine/bubbly">
+          <img src="/assets/markup/images/img06.png" alt="">
+          <span class="caption">Bubbly</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/our-wine/spritzer">
+          <img src="/assets/markup/images/img07.png" alt="">
+          <span class="caption">Spritzer</span>
+        </a>
+      </li>
+    </ul>
+    <div class="btn-center">
+      <a routerLink="/our-wine" class="btn btn-outline-pink">Explore All Our Wines <i class="icon-next"></i></a>
+    </div>
+  </div>
+</section>

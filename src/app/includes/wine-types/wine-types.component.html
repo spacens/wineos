@@ -1,0 +1,28 @@
+<div class="heading">
+  <div class="container">
+
+    <div class="" *ngIf="selectedWineSort">
+      <strong class="selected-wine">
+        {{selectedWineSort.title}}
+        <a class="close" routerLink="/our-wine"><i class="icon-close"></i></a></strong>
+    </div>
+    <div class="grid-flex" *ngIf="!selectedWineSort">
+      <div class="col-sm-4">
+        <h1>Our <br> wine</h1>
+      </div>
+      <div class="col-sm-8">
+        <ul class="wine-list">
+          <li *ngFor="let wine of wineSortList">
+            <a [routerLink]="['/our-wine', wine.title]" >
+              <img [src]="wine.img">
+              <span class="caption">{{wine.title}}</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+

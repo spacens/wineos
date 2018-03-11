@@ -1,0 +1,10 @@
+.error{
+  margin-top: 10px;
+}
+.help-block, span.required, .error {
+  color: red;
+}
+label[for="consent"] {
+  display: inline !important;
+  padding-left: 5px;
+}

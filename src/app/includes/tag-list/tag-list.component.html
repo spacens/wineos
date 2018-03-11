@@ -1,0 +1,17 @@
+<div class="try-that">
+
+  <div class="container">
+    <h3>Try a wine that...</h3>
+    <ul class="btn-list">
+      <li *ngFor="let tag of tagList | slice:0:displayTags">
+        <a class="btn btn-rounded btn-outline-white"
+           [ngClass]="{active : tag.selected}"
+           (click)="tag.selected ?  removeTag(tag) : selectTag(tag)">{{tag.title}}</a>
+      </li>
+      <li>
+        <a class="btn btn-rounded btn-outline-blue1" *ngIf="displayTags < tagList.length" (click)="moreTags()"><i class="icon-plus"></i>load more</a></li>
+    </ul>
+
+  </div>
+
+</div>

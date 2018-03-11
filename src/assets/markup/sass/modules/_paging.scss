@@ -1,0 +1,65 @@
+// ---------------------------------------------------------===
+// Paging styles
+// ---------------------------------------------------------===
+
+.paging {
+    @include stripebg($martinique, blue01, 28px, 28px);
+    padding: 12px 0 23px;
+    color: $white;
+
+    @include media('<tablet') {
+        padding: 24px 0 29px;
+    }
+
+    &:before {
+        top: -28px;
+    }
+
+    &:after {
+        bottom: -28px;
+    }
+
+    a {
+        color: $white;
+        font-weight: 500px;
+        font-size: 17px;
+
+        @include media('>=tablet') {
+            text-transform: uppercase;
+            font-size: 18px;
+        }
+
+        i {
+            font-size: 27px;
+            vertical-align: middle;
+
+            @include media('<tablet') {
+                font-size: 15px;
+            }
+        }
+    }
+
+    .prev {
+        float: left;
+
+        i {
+            margin-right: 11px;
+
+            @include media('<tablet') {
+                margin-right: 9px;
+            }
+        }
+    }
+
+    .next {
+        float: right;
+
+        i {
+            margin-left: 11px;
+
+            @include media('<tablet') {
+                margin-left: 9px;
+            }
+        }
+    }
+}

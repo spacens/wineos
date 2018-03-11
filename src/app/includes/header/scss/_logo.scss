@@ -1,0 +1,17 @@
+.wineos-header-logo {
+  left: 50%;
+  margin: 5px 0 5px -41.5px;
+  position: absolute;
+  z-index: 4;
+
+  a {
+    display: inline-block;
+
+    img {
+      display: inline-block;
+      font-size: 0;
+      line-height: 0;
+      width: 83px;
+    }
+  }
+}

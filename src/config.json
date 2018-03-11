@@ -1,0 +1,17 @@
+{
+  "Brand": {
+    "BrandCode": "BFC",
+    "BrandName": "Barefoot Wine",
+    "Domain": "barefootwine.com"
+  },
+  "Drupal": {
+    "Endpoint": "http://content.barefootwine.com/"
+  },
+  "Proxy": {
+    "Endpoint": "http://content.barefootwine.com/"
+  },
+  "AWS" : {
+    "RootURL" : "",
+    "APIKey" : ""
+  }
+}
